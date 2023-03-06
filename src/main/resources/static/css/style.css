@@ -15,3 +15,17 @@ section > .signup-box{
 /* 	width:300px;
 	height:300px; */
 }
+
+.login-range{
+	width:350px;
+	height:300px;
+	border:1px solid;
+	border-color:lightgray;
+}
+
+.login-box{
+	width:290px;
+	height:290px;
+	
+}
+

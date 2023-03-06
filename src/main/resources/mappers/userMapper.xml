@@ -28,4 +28,17 @@
 		)
 		
 	</insert>
+	
+	
+	<!--  파라미터 타입 스트링인 이유? -->
+	<select id="selectCountByLoginId" parameterType="string" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`user`
+		WHERE
+			`loginId` = #{loginId}
+	
+	</select>
+	
 </mapper>

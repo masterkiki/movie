@@ -12,4 +12,6 @@ public interface UserDAO {
 			, @Param("nickname") String nickname
 			, @Param("email") String email);
 	
+	
+	public int selectCountByLoginId(@Param("loginId") String loginId);	
 }
