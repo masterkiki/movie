@@ -8,5 +8,10 @@
 
 section{
 	width:600px;
-	height:800px;
+	height:700px; 
+}
+
+section > .signup-box{
+/* 	width:300px;
+	height:300px; */
 }
