@@ -3,6 +3,8 @@ package com.pks.movie.user.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.pks.movie.user.model.User;
+
 @Repository
 public interface UserDAO {
 
@@ -14,4 +16,10 @@ public interface UserDAO {
 	
 	
 	public int selectCountByLoginId(@Param("loginId") String loginId);	
+	
+	public User selectUser(
+			@Param("loginId") String loginId
+			, @Param("password") String password);
+	
+	
 }
