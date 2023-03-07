@@ -13,4 +13,10 @@ public class MovieController {
 	public String moivehomeview() {
 		return "/movie/moviehome";
 	}
+	
+	@GetMapping("/upload/view")
+	public String moiveupload() {
+		return "/admin/upload";
+	}
+	
 }

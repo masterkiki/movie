@@ -7,7 +7,7 @@
 }
 
 section{
-	width:600px;
+	width:1000px;
 	height:700px; 
 }
 
@@ -29,3 +29,60 @@ section > .signup-box{
 	
 }
 
+header{
+	width:1200px;
+	/* height:80px; */
+}
+
+header > .logo{
+	width:200px;
+	height:60px;
+}
+
+header > .login-menu{
+	width:1000px;
+	height:60px;
+}
+
+.main-menu{
+	width:200px;
+	height:800px;
+}
+
+/*  .contents{
+	width:1000px;
+	height:800px;
+}  */
+
+.upload{
+	width:1000px;
+}
+
+section > .movie-list{
+	width:1000px;
+}
+
+.top-list{
+	width:1000px;
+	height:200px;
+}
+
+
+.bottom-list{
+	width:1000px;
+	height:200px;
+}
+
+.poster{
+	width:150px;
+	height:150px;
+}
+
+.frame{
+	width:900px;
+}
+
+section > .movie-review{
+	width:1000px;
+	height:400px;
+}

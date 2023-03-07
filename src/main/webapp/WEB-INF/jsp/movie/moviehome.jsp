@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>무비 홈</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -16,10 +16,66 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="bg-info">
-		<header id="loginbar">
+	<div id="wrap" class>
+	
+		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
+		
+		<div class="d-flex">
+			<nav class="main-menu bg-dark">
+				<ul class="nav flex-column mt-4">
+					<li class="nav-items bg-danger"><a href="#" class="nav-link text-white font-weight-bold text-center">영화 홈</a></li>
+					<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">영화 랭킹</a></li>
+					<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">평점</a></li>
+					<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">영화분류</a></li>
+					<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">관리자 메뉴</a></li>
+				</ul>
+			</nav>
 			
-		</header>
+			<section class="contents">
+				<div class="movie-list bg-dark">
+					<div class="d-flex justify-content-center pt-2">
+						<ul class="nav">
+							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">영화 홈</a></li>
+							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">영화 랭킹</a></li>
+							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">평점 </a></li>
+							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">영화분류</a></li>
+						</ul>
+					</div>
+					<div>
+						<div class="top-list d-flex align-items-center justify-content-center">
+							<div class="frame d-flex justify-content-between">
+								<div class="poster bg-secondary">
+									<img src="http://img.movist.com/?img=/x00/05/04/96_p1.jpg" class="w-100 h-100">
+								</div>
+								<div class="poster bg-secondary"></div>
+								<div class="poster bg-secondary"></div>
+								<div class="poster bg-secondary"></div>
+								<div class="poster bg-secondary"></div>
+							</div>
+						</div>
+						<div class="bottom-list d-flex align-items-center justify-content-center pb-4">
+							<div class="frame d-flex justify-content-between">
+								<div class="poster bg-secondary"></div>
+								<div class="poster bg-secondary"></div>
+								<div class="poster bg-secondary"></div>
+								<div class="poster bg-secondary"></div>
+								<div class="poster bg-secondary"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="movie-review">
+					<h4 class="mt-3 ml-4 font-weight-bold">최근 등록된 평점</h4>
+					<hr class="mt-3 ml-4">
+					
+				</div>
+			</section>
+		</div>
+		
+			
+		<div>
+			<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+		</div>
 	</div>
 
 </body>
