@@ -49,10 +49,10 @@ header > .login-menu{
 	height:800px;
 }
 
-/*  .contents{
+.contents{
 	width:1000px;
 	height:800px;
-}  */
+}
 
 .upload{
 	width:1000px;
@@ -86,3 +86,9 @@ section > .movie-review{
 	width:1000px;
 	height:400px;
 }
+ textarea {
+    width: 50%;
+    height: 10.25em;
+    border: none;
+    resize: none;
+  }
