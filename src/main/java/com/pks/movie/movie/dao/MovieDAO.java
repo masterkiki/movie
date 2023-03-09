@@ -1,8 +1,11 @@
 package com.pks.movie.movie.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
+
+import com.pks.movie.movie.model.Movie;
 
 @Repository
 public interface MovieDAO {
@@ -15,5 +18,8 @@ public interface MovieDAO {
 			, @Param("director") String director
 			, @Param("imagePath") String iamgePath
 			, @Param("story") String story);
+
+	public List<Movie> selectMovie();
+	
 	
 }

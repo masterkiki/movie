@@ -41,6 +41,7 @@
 							<option>판타지</option>
 							<option>드라마</option>
 							<option>액션</option>
+							<option>범죄</option>
 						</select>
 						
 					</div>

@@ -1,11 +1,14 @@
 package com.pks.movie.movie.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pks.movie.common.FileManagerService;
 import com.pks.movie.movie.dao.MovieDAO;
+import com.pks.movie.movie.model.Movie;
 
 @Service
 public class MovieBO {
@@ -26,5 +29,12 @@ public class MovieBO {
 		
 		return movieDAO.addMovie(movietitle, genre, country, releasedate, director, imagePath, story);
 	}
-		
+	
+	
+	public List<Movie> getMovieList() {
+		return movieDAO.selectMovie();
+	}
+	
+	
+	
 }

@@ -31,8 +31,23 @@
 			, now()
 		)
 		
-		
-		
 	</insert>
+	
+	<select id="selectMovie" parameterType="int" resultType="com.pks.movie.movie.model.Movie">
+		SELECT
+			`id`
+			, `movietitle`
+			, `genre`
+			, `country`
+			, `releasedate`
+			, `director`
+			, `imagePath`
+			, `story`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`movie`
+	
+	</select>
 
 </mapper>

@@ -6,10 +6,10 @@
 	margin:auto;
 }
 
-section{
+ section{
 	width:1000px;
-	height:700px; 
-}
+/* 	height:700px;  */
+} 
 
 section > .signup-box{
 /* 	width:300px;
@@ -60,6 +60,10 @@ header > .login-menu{
 
 section > .movie-list{
 	width:1000px;
+}
+
+.poster-box{
+	height:400px;
 }
 
 .top-list{

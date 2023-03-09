@@ -35,31 +35,21 @@
 				<div class="movie-list bg-dark">
 					<div class="d-flex justify-content-center pt-2">
 						<ul class="nav">
-							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">영화 홈</a></li>
-							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">영화 랭킹</a></li>
-							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">평점 </a></li>
-							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">영화분류</a></li>
+							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">평점순</a></li>
+							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">리뷰순 </a></li>
+							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">관객수순</a></li>
 						</ul>
 					</div>
-					<div>
-						<div class="top-list d-flex align-items-center justify-content-center">
-							<div class="frame d-flex justify-content-between">
-								<div class="poster bg-secondary">
-									<img src="http://img.movist.com/?img=/x00/05/04/96_p1.jpg" class="w-100 h-100">
+					<div class="poster-box">
+						<div class="top-list  align-items-center justify-content-center">
+							<div class="frame d-flex justify-content-between flex-wrap">
+								
+								<c:forEach var="movie" items="${movieList }">
+								<div class="poster bg-secondary ml-4 mb-5">
+									<img src="${movie.imagePath }" class="w-100 h-100">
 								</div>
-								<div class="poster bg-secondary"></div>
-								<div class="poster bg-secondary"></div>
-								<div class="poster bg-secondary"></div>
-								<div class="poster bg-secondary"></div>
-							</div>
-						</div>
-						<div class="bottom-list d-flex align-items-center justify-content-center pb-4">
-							<div class="frame d-flex justify-content-between">
-								<div class="poster bg-secondary"></div>
-								<div class="poster bg-secondary"></div>
-								<div class="poster bg-secondary"></div>
-								<div class="poster bg-secondary"></div>
-								<div class="poster bg-secondary"></div>
+
+								</c:forEach>
 							</div>
 						</div>
 					</div>
