@@ -95,4 +95,38 @@ section > .movie-review{
     height: 10.25em;
     border: none;
     resize: none;
-  }
+ }
+
+.movie-info{
+	width:1000px;
+	height:200px;
+}
+
+.movie-poster{
+	width:200px;
+	height:200px;
+}
+
+.info-detail{
+	width:800px;
+	height:200px;
+}
+
+.movie-story{
+	width:500px;
+	height:400px;
+}
+
+.famous-line{
+	width:500px;
+	height:400px;
+}
+
+.movie-review{
+	width:1000px;
+	height:400px;
+}
+ 
+ 
+ 
+ 

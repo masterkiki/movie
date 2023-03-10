@@ -21,5 +21,10 @@ public interface MovieDAO {
 
 	public List<Movie> selectMovie();
 	
+	public int updateAudience(
+			@Param("movieId") int movieId
+			, @Param("audience") int audience);
+	
+	public Movie selectMovieById(@Param("movieId") int movieId);
 	
 }

@@ -35,6 +35,16 @@ public class MovieBO {
 		return movieDAO.selectMovie();
 	}
 	
+	public int updateAudience(
+			int movieId
+			, int audience) {
+		return movieDAO.updateAudience(movieId, audience);
+	}
+	
+	
+	public Movie getMoiveById(int movieId) {
+		 return movieDAO.selectMovieById(movieId);
+	}
 	
 	
 }

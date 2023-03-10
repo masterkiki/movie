@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pks.movie.movie.bo.MovieBO;
 import com.pks.movie.movie.model.Movie;
@@ -41,4 +42,19 @@ public class MovieController {
 		return "/admin/movielist";
 	}
 
+	
+
+	
+	
+	@GetMapping("/detail/view")
+	public String movieInfoView(
+			@RequestParam("movieId") int movieId			
+			,Model model) {
+		Movie movie = movieBO.getMoiveById(movieId);
+		
+		model.addAttribute("movie", movie);
+		
+		return "/movie/moviedetail";
+	}
+	
 }

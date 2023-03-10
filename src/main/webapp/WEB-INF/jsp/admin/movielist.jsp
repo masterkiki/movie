@@ -43,8 +43,8 @@
 									<td>${movie.id }</td>
 									<td class="col-4">${movie.movietitle }</td>
 									<td>
-										<input type="text" style="width:50%;" >
-										<button class="ml-1 btn btn-secondary btn-sm">갱신</button>
+										<input type="text" style="width:50%;" id="audienceInput">
+										<button class="ml-1 btn btn-secondary btn-sm" id ="audienceUpdateBtn" data-movie-id="${movie.id }">갱신</button>
 									</td>
 									<td>
 										<input type="text" style="width:50%;" id="actorInput">
@@ -68,6 +68,37 @@
 	
 	<script>
 		$(document).ready(function(){
+			
+			
+			$("#audienceUpdateBtn").on("click", function(){
+				let audience = $("#audienceInput").val();
+				let movieId = $(this).data("movie-id");
+				
+				if(audience == ""){
+					alert("관객수를 입력하세요");
+					return;
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/movie/audience/update"
+					, data:{"audience":audience, "movieId":movieId}
+					, success:function(data){
+						if(data.result == "success"){
+							alert("관객수 업데이트 완료");
+						} else{
+							alert("관객수 업데이트 실패");
+						}
+					}
+					, error:function(){
+						alert("관객수 업데이트 에러");
+					}
+				});
+			});
+			
+			
+			
+			
 			$("#actoruploadBtn").on("click",function(){
 				let actor = $("#actorInput").val();
 				let movieId = $(this).data("movie-id");
