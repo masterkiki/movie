@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.pks.movie.movie.model.Movie;
+import com.pks.movie.movie.model.MovieDetail;
 
 @Repository
 public interface MovieDAO {
@@ -25,6 +26,6 @@ public interface MovieDAO {
 			@Param("movieId") int movieId
 			, @Param("audience") int audience);
 	
-	public Movie selectMovieById(@Param("movieId") int movieId);
+	public MovieDetail selectMovieById(@Param("movieId") int movieId);
 	
 }

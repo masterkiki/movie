@@ -13,6 +13,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
@@ -41,14 +43,20 @@
 								<c:forEach var="movie" items="${movieList }">
 								<tr>
 									<td>${movie.id }</td>
-									<td class="col-4">${movie.movietitle }</td>
+									<td>${movie.movietitle }</td>
 									<td>
-										<input type="text" style="width:50%;" id="audienceInput">
+										<input type="text" style="width:25%;" id="audienceInput">
 										<button class="ml-1 btn btn-secondary btn-sm" id ="audienceUpdateBtn" data-movie-id="${movie.id }">갱신</button>
 									</td>
-									<td>
+									<td class="d-flex">
 										<input type="text" style="width:50%;" id="actorInput">
-										<button class="ml-1 btn btn-secondary btn-sm" id="actoruploadBtn" data-movie-id="${movie.id }" >등록</button>
+										<div class="ml-2 image-upload">
+				   						 	<label for="actorPicInput">
+				        						<div class="upload-icon" id="actorPicuploadBtn"><i class="bi bi-image"></i></div>
+				    						</label>
+				    						<input id="actorPicInput" type="file" style="display: none;"/>
+										</div>		
+										<button class="ml-2 btn btn-secondary btn-sm" id="actoruploadBtn" data-movie-id="${movie.id }" >등록</button>
 									</td>
 									<td><button class="btn btn-secondary btn-sm">수정</button></td>
 									<td><button class="btn btn-danger btn-sm">삭제</button></td>

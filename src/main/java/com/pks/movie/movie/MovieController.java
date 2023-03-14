@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pks.movie.actor.bo.ActorBO;
+import com.pks.movie.actor.model.Actor;
 import com.pks.movie.movie.bo.MovieBO;
 import com.pks.movie.movie.model.Movie;
+import com.pks.movie.movie.model.MovieDetail;
 
 @Controller
 @RequestMapping("/movie")
@@ -18,6 +21,8 @@ public class MovieController {
 
 	@Autowired
 	private MovieBO movieBO;
+	
+	@Autowired ActorBO actorBO;
 	
 	
 	@GetMapping("/home/view")
@@ -50,10 +55,11 @@ public class MovieController {
 	public String movieInfoView(
 			@RequestParam("movieId") int movieId			
 			,Model model) {
-		Movie movie = movieBO.getMoiveById(movieId);
+		MovieDetail movie = movieBO.getMoiveById(movieId);
+		Actor actor = actorBO.getActorByMovieId(movieId);
 		
 		model.addAttribute("movie", movie);
-		
+		model.addAttribute("actor", actor);
 		return "/movie/moviedetail";
 	}
 	

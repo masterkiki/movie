@@ -18,6 +18,18 @@
 		)
 		
 	</insert>
+	
+	<select id="selectActorByMovieId" parameterType="map" resultType="com.pks.movie.actor.model.Actor">
+		SELECT
+			`id`
+			, `movieId`
+			, `actor`
+		FROM
+			`actor`
+		WHERE
+			`id` = #{movieId}
+	
+	</select>
 
 
 </mapper>

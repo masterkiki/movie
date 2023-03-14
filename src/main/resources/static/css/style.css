@@ -46,7 +46,7 @@ header > .login-menu{
 
 .main-menu{
 	width:200px;
-	height:800px;
+/* 	height:800px; */
 }
 
 .contents{
@@ -99,7 +99,7 @@ section > .movie-review{
 
 .movie-info{
 	width:1000px;
-	height:200px;
+	height:180px;
 }
 
 .movie-poster{
@@ -108,25 +108,27 @@ section > .movie-review{
 }
 
 .info-detail{
-	width:800px;
-	height:200px;
+/* 	width:800px;
+	height:200px; */
 }
 
 .movie-story{
 	width:500px;
-	height:400px;
+/* 	height:300px; */
 }
 
 .famous-line{
 	width:500px;
-	height:400px;
+/* 	height:300px; */
 }
 
 .movie-review{
 	width:1000px;
 	height:400px;
 }
- 
+
+
+
  
  
  

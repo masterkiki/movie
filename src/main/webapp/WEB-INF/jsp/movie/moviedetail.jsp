@@ -25,24 +25,42 @@
 					<div class="movie-poster d-felx text-center">
 						<img src="${movie.imagePath }" class="w-75 h-75 mt-3">
 					</div>
-					<div class="info-detail">
-						<div><b>${movie.movietitle }</b></div>
-						<div>평점  ★★★★★ 10     내평점 ☆☆☆☆☆  작성하러가기></div>
-						<div>${movie.genre } | ${movie.country } | 120분 | ${movie.releasedate } | ${movie.audience}명</div>
-						<div class="d-flex">
-							<div><b class="mr-2">감독</b>${movie.director }</div>
-							<div class="ml-3"><b class="mr-2">감독</b>${movie.actor }</div>
+					<div class="d-flex align-items-center">
+						<div class="info-detail">
+							<div><b>${movie.movietitle }</b></div>
+							<div>평점  ★★★★★ 10     내평점 ☆☆☆☆☆  작성하러가기></div>
+							<div>${movie.genre } | ${movie.country } | 120분 | ${movie.releasedate } | ${movie.audience}명</div>
+							<div class="d-flex">
+								<div><b class="mr-2">감독</b>${movie.director }</div>
+								<div class="ml-3"><b class="mr-2">배우</b>${actor.actor }</div>
+							</div>
 						</div>
 					</div>
-				
 				</div>
-				
-				<div class="d-flex">
-					<div class="movie-story bg-success"></div>
-					<div class="famous-line bg-dark"></div>
+				<hr class="ml-3">
+				<div class="ml-3">
+					<div class="d-flex">
+						<div class="movie-story">
+						<div class="container mt-2">
+							<h2><b>줄거리</b></h1>
+							<div class="mt-3">
+								${movie.story }
+							</div>
+						</div>
+						</div>
+						<div class="famous-line">
+							<div class="container mt-2">
+									<h2><b>명대사</b></h2>
+							</div>
+						</div>
+					</div>
+					
+					<div  class="movie-review">
+						<div class="container mt-4">
+							<h2><b>평점</b></h2>
+						</div>
+					</div>
 				</div>
-				
-				<div  class="movie-review bg-danger"></div>
 				
 			</div>
 		</div>

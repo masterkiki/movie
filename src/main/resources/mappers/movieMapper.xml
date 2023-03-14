@@ -59,7 +59,7 @@
 			`id` = #{movieId}
 	</update>
 
-		<select id="selectMovieById" parameterType="int" resultType="com.pks.movie.movie.model.Movie">
+		<select id="selectMovieById" parameterType="int" resultType="com.pks.movie.movie.model.MovieDetail">
 		SELECT
 			`id`
 			, `movietitle`

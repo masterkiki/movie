@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.pks.movie.common.FileManagerService;
 import com.pks.movie.movie.dao.MovieDAO;
 import com.pks.movie.movie.model.Movie;
+import com.pks.movie.movie.model.MovieDetail;
 
 @Service
 public class MovieBO {
@@ -42,7 +43,7 @@ public class MovieBO {
 	}
 	
 	
-	public Movie getMoiveById(int movieId) {
+	public MovieDetail getMoiveById(int movieId) {
 		 return movieDAO.selectMovieById(movieId);
 	}
 	
