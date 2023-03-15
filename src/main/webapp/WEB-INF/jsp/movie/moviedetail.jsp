@@ -38,34 +38,99 @@
 					</div>
 				</div>
 				<hr class="ml-3">
-				<div class="ml-3">
-					<div class="d-flex">
-						<div class="movie-story">
-						<div class="container mt-2">
-							<h2><b>줄거리</b></h1>
-							<div class="mt-3">
-								${movie.story }
+					<div class="d-flex justify-content-center">
+						<ul class="nav ml-3 bg-dark">
+							<li class="nav-items"><a href="#" class="nav-link text-white">주요정보</a></li>
+							<li class="nav-items"><a href="#" class="nav-link text-white">배우/제작진</a></li>
+							<li class="nav-items"><a href="#" class="nav-link text-white">평점</a></li>
+							<li class="nav-items"><a href="#" class="nav-link text-white" id="famouslineBtn">명대사</a></li>
+							
+						</ul>
+					</div>
+				<hr class="ml-3">
+				
+				<div class="ml-3 aaa">
+					<div>
+						<div class="d-flex">
+							<div class="movie-story">
+							<div class="container mt-2">
+								<h4><b>줄거리</b></h4>
+								<div class="mt-3">
+									${movie.story }
+								</div>
+							</div>
+							</div>
+							<div class="famous-line">
+								<div class="container mt-2">
+									<div class="d-flex align-items-center">
+										<div class="d-flex align-items-center">
+											<h4><b>명대사</b></h4>
+										</div>
+										<div class="ml-1">
+											<button type="button" class="btn btn-white"><b>명대사 쓰기</b></button>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						</div>
-						<div class="famous-line">
-							<div class="container mt-2">
-									<h2><b>명대사</b></h2>
+						
+						<div  class="movie-review">
+							<div class="container mt-4">
+								<h4><b>평점</b></h4>
 							</div>
 						</div>
 					</div>
-					
-					<div  class="movie-review">
-						<div class="container mt-4">
-							<h2><b>평점</b></h2>
+					<div class="bbb d-none">
+						<div class="d-flex justify-content-center">
+							<div>
+								<div>
+									<h4><b>명대사</b></h4>
+								</div>
+								<div class="famouline-box d-flex">
+									<div class="col-10">
+										<select class="form-control" id="actorSelect">
+												<option selected>-배우를 선택하세요-</option>
+												<option>송강호</option>
+												<option>등등</option>
+												<option>ㅇㅇㅇ</option>
+												<option>다큐</option>
+												<option>판타지</option>
+												<option>드라마</option>
+												<option>액션</option>
+												<option>범죄</option>
+										</select>
+										
+										<input type="text" class="form-control" placeholder="명대사를 입력하세요">
+										<input type="text" class="form-control" placeholder="상세 설명을 입력하세요">
+									</div>
+									<div class="col-2">
+										<button type="button" class="btn btn-dark w-100 h-100">등록</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
+	
+	
+	
+	<script>
+		$(document).ready(function(){
+			$("#famouslineBtn").on("click",function(){
+				
+				
+				$(".bbb").removeClass('d-none');
+				$(".aaa").addClass('d-none');
+			});
+		});	
+	
+	
+	
+	</script>
 	
 </body>
 </html>

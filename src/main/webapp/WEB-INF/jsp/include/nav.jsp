@@ -12,7 +12,6 @@
 				<ul class="d-none adminmenu nav flex-column">
 					<li class="nav-items bg-secondary"><a href="/movie/admin/upload/view" class="nav-link text-white font-weight-bold text-center">영화 등록</a></li>
 					<li class="nav-items bg-secondary"><a href="/movie/admin/movielist/view" class="nav-link text-white font-weight-bold text-center">영화 관리</a></li>
-					<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">배우 등록</a></li>
 					<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">평점 관리</a></li>
 					<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">명대사 관리</a></li>
 				</ul>

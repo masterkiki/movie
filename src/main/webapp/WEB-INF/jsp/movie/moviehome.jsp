@@ -36,7 +36,7 @@
 					</div>
 					<div class="poster-box">
 						<div class="top-list  align-items-center justify-content-center">
-							<div class="frame d-flex justify-content-between flex-wrap">
+							<div class="frame d-flex flex-wrap">
 								
 								<c:forEach var="movie" items="${movieList }">
 								<div class="poster bg-secondary ml-4 mb-5">
