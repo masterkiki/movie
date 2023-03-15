@@ -44,6 +44,10 @@ header > .login-menu{
 	height:60px;
 }
 
+.login-bar{
+	height:30px;
+}
+
 .main-menu{
 	width:200px;
 /* 	height:800px; */
@@ -127,7 +131,7 @@ section > .movie-review{
 	height:400px;
 }
 
-.famouline-box{
+.famousline-box{
 	width:800px;
 }
 

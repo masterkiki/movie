@@ -1,5 +1,7 @@
 package com.pks.movie.actor.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +16,8 @@ public interface ActorDAO {
 	
 	
 	public Actor selectActorByMovieId(@Param("movieId") int movieId);
+	
+	
+	public List<Actor> selectActorList(@Param("movieId") int movieId);
 	
 }

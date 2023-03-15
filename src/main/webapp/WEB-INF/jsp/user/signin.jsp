@@ -25,7 +25,7 @@
 					<h1 class="text-center display-4 font-weight-bold">Movie</h1>
 					
 					<div class="login-range d-flex justify-content-center align-items-center mt-4">
-						<div class="login-box">
+						<form id="loginForm" class="login-box">
 							<div class="mt-4">
 								<label>아이디</label>
 								<div class="d-flex">
@@ -35,7 +35,7 @@
 							<label  class="mt-3">비밀번호</label>
 							<input type="password" class="form-control" id="passwordInput">
 							<button class="btn btn-dark mt-4 btn-block" id="signinBtn">로그인</button>
-						</div>
+						</form>
 					
 					</div>
 					<div class="text-center small mt-2">
@@ -48,6 +48,53 @@
 		</div>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+
+		<script>
+			$(document).ready(function(){
+				$("#loginForm").on("submit", function(e){
+					//$("#signinBtn").on("click", function(){
+						
+					// 해당 이벤트의 기능을 모두 취소한다
+					e.preventDefault();
+					
+					let loginId = $("#loginIdInput").val();
+					let password = $("#passwordInput").val();
+					
+					if(loginId == ""){
+						alert("아이디를 입력하세요");
+						return;
+					} 
+					
+					if(password == ""){
+						alert("비밀번호를 입력하세요");
+						return;
+					}
+					
+					
+					$.ajax({
+						type:"post"
+						, url:"/user/signin"
+						, data:{"loginId":loginId, "password":password}
+						, success:function(data){
+							if(data.result == "success"){
+								location.href = "/movie/home/view";
+							} else{
+								alert("아이디 비밀번호를 확인해주세요");
+							}
+							
+						}
+						, error:function(){
+							alert("로그인 에러");
+						}
+						
+						
+					
+					});
+					
+				});
+					
+			});
+		</script>
 
 
 

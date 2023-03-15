@@ -58,15 +58,27 @@ public class UserRestController {
 		return result;
 	}
 	
-//	@PostMapping("/signin")
-//	public Map<String, String> signin(
-//			String loginId
-//			, String password
-//			, HttpSession session){
-//		User user = userBO.getUser(loginId, password);
-//		Map<String, String> result = new HashMap<>();
-//		
-//		session.setAttribute("", );
-//	}
+	@PostMapping("/signin")
+	public Map<String, String> signin(
+			@RequestParam("loginId") String loginId
+			, @RequestParam("password") String password
+			, HttpSession session){
+		
+		
+		User user = userBO.getUser(loginId, password);
+		Map<String, String> result = new HashMap<>();
+		
+		if(user !=null) {
+			session.setAttribute("userId", user.getLoginId());
+			session.setAttribute("nickName", user.getNickname());
+			
+			result.put("result", "success");
+		}
+		else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
 	
 }

@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileManagerService {
-	public static final String FILE_UPLOAD_PATH =  "C:\\pks\\springProject\\upload\\movieposters";
+	public static final String FILE_UPLOAD_PATH =  "C:\\pks\\springProject\\upload";
 	
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	

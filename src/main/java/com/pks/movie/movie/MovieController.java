@@ -43,6 +43,7 @@ public class MovieController {
 	public String moiveList(Model model) {
 		List<Movie> movieList = movieBO.getMovieList();
 		
+		
 		model.addAttribute("movieList" ,movieList);
 		return "/admin/movielist";
 	}
@@ -60,7 +61,11 @@ public class MovieController {
 		
 		model.addAttribute("movie", movie);
 		model.addAttribute("actor", actor);
+		List<Actor> actorList = actorBO.getActorList(movieId);
+		
+		model.addAttribute("actorList", actorList);
 		return "/movie/moviedetail";
 	}
 	
+
 }

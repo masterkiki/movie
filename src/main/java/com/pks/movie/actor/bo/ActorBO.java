@@ -1,5 +1,7 @@
 package com.pks.movie.actor.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,10 @@ public class ActorBO {
 	
 	public Actor getActorByMovieId(int movieId) {
 		return actorDAO.selectActorByMovieId(movieId);
+	}
+	
+	public List<Actor> getActorList(int movieId){
+		return actorDAO.selectActorList(movieId);
 	}
 
 }

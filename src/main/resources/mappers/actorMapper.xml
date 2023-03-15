@@ -30,6 +30,18 @@
 			`id` = #{movieId}
 	
 	</select>
+	
+	<select id="selectActorList" parameterType="int" resultType="com.pks.movie.actor.model.Actor">
+		SELECT
+			`id`
+			, `movieId`
+			, `actor`
+		FROM
+			`actor`
+		WHERE
+			`movieId` = #{movieId}
+
+	</select>
 
 
 </mapper>

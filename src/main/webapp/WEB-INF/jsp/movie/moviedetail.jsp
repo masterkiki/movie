@@ -40,17 +40,16 @@
 				<hr class="ml-3">
 					<div class="d-flex justify-content-center">
 						<ul class="nav ml-3 bg-dark">
-							<li class="nav-items"><a href="#" class="nav-link text-white">주요정보</a></li>
+							<li class="nav-items"><a href="#" class="nav-link text-white" id="maininfoBtn">주요정보</a></li>
 							<li class="nav-items"><a href="#" class="nav-link text-white">배우/제작진</a></li>
 							<li class="nav-items"><a href="#" class="nav-link text-white">평점</a></li>
-							<li class="nav-items"><a href="#" class="nav-link text-white" id="famouslineBtn">명대사</a></li>
-							
+							<li class="nav-items"><a href="#" class="nav-link text-white" id="famousLineBtn">명대사</a></li>
 						</ul>
 					</div>
 				<hr class="ml-3">
 				
-				<div class="ml-3 aaa">
-					<div>
+				<div class="ml-3">
+					<div class="main-info">
 						<div class="d-flex">
 							<div class="movie-story">
 							<div class="container mt-2">
@@ -66,8 +65,8 @@
 										<div class="d-flex align-items-center">
 											<h4><b>명대사</b></h4>
 										</div>
-										<div class="ml-1">
-											<button type="button" class="btn btn-white"><b>명대사 쓰기</b></button>
+										<div class="ml-3">
+											<button type="button" class="btn btn-white">명대사 쓰기</button>
 										</div>
 									</div>
 								</div>
@@ -80,24 +79,20 @@
 							</div>
 						</div>
 					</div>
-					<div class="bbb d-none">
+					
+					<div class="famousline-page d-none">
 						<div class="d-flex justify-content-center">
 							<div>
 								<div>
 									<h4><b>명대사</b></h4>
 								</div>
-								<div class="famouline-box d-flex">
+								<div class="famousline-box d-flex">
 									<div class="col-10">
 										<select class="form-control" id="actorSelect">
 												<option selected>-배우를 선택하세요-</option>
-												<option>송강호</option>
-												<option>등등</option>
-												<option>ㅇㅇㅇ</option>
-												<option>다큐</option>
-												<option>판타지</option>
-												<option>드라마</option>
-												<option>액션</option>
-												<option>범죄</option>
+										<c:forEach var="actor" items="${actorList}">
+												<option>${actor.actor }</option>
+										</c:forEach>		
 										</select>
 										
 										<input type="text" class="form-control" placeholder="명대사를 입력하세요">
@@ -110,6 +105,7 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -120,15 +116,17 @@
 	
 	<script>
 		$(document).ready(function(){
-			$("#famouslineBtn").on("click",function(){
-				
-				
-				$(".bbb").removeClass('d-none');
-				$(".aaa").addClass('d-none');
+			$("#famousLineBtn").on("click",function(){
+				$(".main-info").addClass("d-none");
+				$(".famousline-page").removeClass("d-none");
 			});
-		});	
-	
-	
+			
+			$("#maininfoBtn").on("click",function(){
+				$(".famousline-page").addClass("d-none");
+				$(".main-info").removeClass("d-none");
+			});
+			
+		});
 	
 	</script>
 	
