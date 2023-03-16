@@ -25,6 +25,9 @@ public class UserController {
 		
 		session.removeAttribute("userId");
 		session.removeAttribute("nickName");
+		session.removeAttribute("loginId");
+		
+		
 		
 		return "redirect:/movie/home/view";
 	}

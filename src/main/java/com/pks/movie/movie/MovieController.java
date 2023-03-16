@@ -14,6 +14,8 @@ import com.pks.movie.actor.model.Actor;
 import com.pks.movie.movie.bo.MovieBO;
 import com.pks.movie.movie.model.Movie;
 import com.pks.movie.movie.model.MovieDetail;
+import com.pks.movie.user.bo.UserBO;
+import com.pks.movie.user.model.User;
 
 @Controller
 @RequestMapping("/movie")
@@ -22,7 +24,12 @@ public class MovieController {
 	@Autowired
 	private MovieBO movieBO;
 	
-	@Autowired ActorBO actorBO;
+	@Autowired 
+	private ActorBO actorBO;
+	
+	@Autowired
+	private UserBO userBO;
+	
 	
 	
 	@GetMapping("/home/view")
@@ -54,18 +61,26 @@ public class MovieController {
 	
 	@GetMapping("/detail/view")
 	public String movieInfoView(
-			@RequestParam("movieId") int movieId			
+			@RequestParam("movieId") int movieId
+			, @RequestParam(value="val" ,required=false) String val
 			,Model model) {
+		
+		
 		MovieDetail movie = movieBO.getMoiveById(movieId);
 		Actor actor = actorBO.getActorByMovieId(movieId);
 		
+		
 		model.addAttribute("movie", movie);
 		model.addAttribute("actor", actor);
+		
+		
 		List<Actor> actorList = actorBO.getActorList(movieId);
 		
 		model.addAttribute("actorList", actorList);
 		return "/movie/moviedetail";
 	}
+	
+
 	
 
 }

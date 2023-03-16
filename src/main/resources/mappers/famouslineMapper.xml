@@ -7,18 +7,23 @@
 	
 	<insert id="insertFamousLine" parameterType="map">
 		INSERT INTO
+			`famousline`
 		(
 			`userId`
 			, `movieId`
+			, `actorId`
 			, `famousline`
+			, `explain`
+			, `createdAt`
 			, `updatedAt`
-			, `create
 		)
 		VALUE
 		(
 			#{userId}
 			, #{movieId}
+			, #{actorId}
 			, #{famousline}
+			, #{explain}
 			,now()
 			,now()
 		)

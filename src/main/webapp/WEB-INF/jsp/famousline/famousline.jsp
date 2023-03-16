@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화디테일</title>
+<title>명대사</title>
 </head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -39,11 +39,11 @@
 				</div>
 				<hr class="ml-3">
 					<div class="d-flex justify-content-center">
-						<ul class="nav ml-3 bg-dark id="menu">
-							<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="1">주요정보</a></li>
-							<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="2">배우/제작진</a></li>
-							<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="3">평점</a></li>
-							<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=4" name="submenu" class="nav-link text-white" id="4">명대사</a></li>
+						<ul class="nav ml-3 bg-dark">
+							<li class="nav-items"><a href="#" name="submenu" class="submenu nav-link text-white" value="info" id="maininfoBtn">주요정보</a></li>
+							<li class="nav-items"><a href="#" name="submenu"  class="submenu nav-link text-white" value="actor&staff">배우/제작진</a></li>
+							<li class="nav-items"><a href="#" name="submenu"  class="submenu nav-link text-white" value="reivew">평점</a></li>
+							<li class="nav-items"><a href="#" name="submenu"  class="submenu nav-link text-white" vlaue="famousline" id="famousLineBtn">명대사</a></li>
 						</ul>
 					</div>
 				<hr class="ml-3">
@@ -80,7 +80,7 @@
 						</div>
 					</div>
 					
-					<div class="famousline-page d-none">
+					<div class="famousline-page d-none" id="famouspage">
 						<div class="d-flex justify-content-center">
 							<div>
 								<div>
@@ -117,20 +117,9 @@
 	<script>
 		$(document).ready(function(){
 			
-			$("a[name='submenu']").on("click",function(){
-				var getId = $(this).attr("id");
+			$("a[name='submenu']").on("cilck",function(){
 				
-				if(getId == 4){
-					$(".main-info").addClass("d-none");
-					$(".famousline-page").removeClass("d-none");
-				}
 				
-/* 				$.ajax({
-					type:"post"
-					, url:"/movie/detailview"
-					, data:{"val":getId}
-				});
- */
 			});
 			
 			
