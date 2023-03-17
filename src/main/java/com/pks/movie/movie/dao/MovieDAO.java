@@ -28,4 +28,5 @@ public interface MovieDAO {
 	
 	public MovieDetail selectMovieById(@Param("movieId") int movieId);
 	
+	public int deleteMovie(@Param("movieId") int movieId);	
 }

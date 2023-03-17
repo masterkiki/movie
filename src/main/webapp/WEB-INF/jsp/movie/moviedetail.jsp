@@ -40,14 +40,14 @@
 				<hr class="ml-3">
 					<div class="d-flex justify-content-center">
 						<ul class="nav ml-3 bg-dark id="menu">
-							<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="1">주요정보</a></li>
+							<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=1" name="submenu" class="nav-link text-white" id="1">주요정보</a></li>
 							<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="2">배우/제작진</a></li>
 							<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="3">평점</a></li>
 							<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=4" name="submenu" class="nav-link text-white" id="4">명대사</a></li>
 						</ul>
 					</div>
 				<hr class="ml-3">
-				
+				<c:if test="${param.val eq '1' }">
 				<div class="ml-3">
 					<div class="main-info">
 						<div class="d-flex">
@@ -79,33 +79,41 @@
 							</div>
 						</div>
 					</div>
-					
-					<div class="famousline-page d-none">
-						<div class="d-flex justify-content-center">
+				</div>
+				</c:if>
+				
+				<c:if test="${param.val == '4'}">
+				
+				<!--  명대사 메뉴  -->
+				
+				<div class="famousline-page">
+					<div class="d-flex justify-content-center">
+						<div>
 							<div>
-								<div>
-									<h4><b>명대사</b></h4>
+								<h4><b>명대사</b></h4>
+							</div>
+							<div class="famousline-box d-flex">
+								<div class="col-10">
+									<select class="form-control" id="actorSelect">
+											<option selected value="">-배우를 선택하세요-</option>
+									<c:forEach var="actor" items="${actorList}">
+											<option value="${actor.id }">${actor.actor }</option>
+									</c:forEach>		
+									</select>
+									
+									<input type="text" class="form-control" placeholder="명대사를 입력하세요" id="famouslineInput">
+									<input type="text" class="form-control" placeholder="상세 설명을 입력하세요" id="explainInput">
 								</div>
-								<div class="famousline-box d-flex">
-									<div class="col-10">
-										<select class="form-control" id="actorSelect">
-												<option selected value="">-배우를 선택하세요-</option>
-										<c:forEach var="actor" items="${actorList}">
-												<option value="${actor.id }">${actor.actor }</option>
-										</c:forEach>		
-										</select>
-										
-										<input type="text" class="form-control" placeholder="명대사를 입력하세요" id="famouslineInput">
-										<input type="text" class="form-control" placeholder="상세 설명을 입력하세요" id="explainInput">
-									</div>
-									<div class="col-2">
-										<button type="button" class="btn btn-dark w-100 h-100" id="famouslineAddBtn">등록</button>
-									</div>
+								<div class="col-2">
+									<button type="button" class="btn btn-dark w-100 h-100" id="famouslineAddBtn">등록</button>
 								</div>
 							</div>
 						</div>
 					</div>
-
+				</div>
+				
+				<!--  /명대사 메뉴  -->
+				</c:if>
 				</div>
 			</div>
 		</div>

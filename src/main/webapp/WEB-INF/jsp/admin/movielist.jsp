@@ -46,7 +46,7 @@
 									<td>${movie.movietitle }</td>
 									<td>
 										<input type="text" style="width:25%;" id="audienceInput">
-										<button class="ml-1 btn btn-secondary btn-sm" id ="audienceUpdateBtn" data-movie-id="${movie.id }">갱신</button>
+										<button class="ml-1 btn btn-secondary btn-sm audienceUpdateBtn" data-movie-id="${movie.id }">갱신</button>
 									</td>
 									<td class="d-flex">
 										<input type="text" style="width:50%;" id="actorInput">
@@ -56,10 +56,10 @@
 				    						</label>
 				    						<input id="actorPicInput" type="file" style="display: none;"/>
 										</div>		
-										<button class="ml-2 btn btn-secondary btn-sm" id="actoruploadBtn" data-movie-id="${movie.id }" >등록</button>
+										<button class="actoruploadBtn ml-2 btn btn-secondary btn-sm" data-movie-id="${movie.id }" >등록</button>
 									</td>
 									<td><button class="btn btn-secondary btn-sm">수정</button></td>
-									<td><button class="btn btn-danger btn-sm">삭제</button></td>
+									<td><button class="moviedeleteBtn btn btn-danger btn-sm" data-movie-id="${movie.id }">삭제</button></td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -77,8 +77,33 @@
 	<script>
 		$(document).ready(function(){
 			
+			$(".moviedeleteBtn").on("click", function(){
+				
+				let movieId = $(this).data("movie-id");
+				
+				$.ajax({
+					type:"post"
+					, url:"/movie/delete"
+					, data:{"movieId":movieId}
+					, success:function(data){
+						if(data.result == "success"){
+							location.reload();
+						} else {
+							alert("삭제 실패");
+						}
+					}
+					, error:function(){
+						alert("삭세 에러");
+					}
+					
+				});
+				
+			});
 			
-			$("#audienceUpdateBtn").on("click", function(){
+			
+			
+			
+			$(".audienceUpdateBtn").on("click", function(){
 				let audience = $("#audienceInput").val();
 				let movieId = $(this).data("movie-id");
 				
@@ -107,7 +132,7 @@
 			
 			
 			
-			$("#actoruploadBtn").on("click",function(){
+			$(".actoruploadBtn").on("click",function(){
 				let actor = $("#actorInput").val();
 				let movieId = $(this).data("movie-id");
 				

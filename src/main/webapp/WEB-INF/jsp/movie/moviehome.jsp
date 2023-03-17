@@ -40,7 +40,7 @@
 								
 								<c:forEach var="movie" items="${movieList }">
 								<div class="poster bg-secondary ml-4 mb-5">
-									<a href="/movie/detail/view?movieId=${movie.id }"><img src="${movie.imagePath }" class="w-100 h-100"> </a>
+									<a href="/movie/detail/view?movieId=${movie.id }&val=1"><img src="${movie.imagePath }" class="w-100 h-100"> </a>
 								</div>
 
 								</c:forEach>

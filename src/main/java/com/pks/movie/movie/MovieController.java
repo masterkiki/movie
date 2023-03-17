@@ -62,7 +62,8 @@ public class MovieController {
 	@GetMapping("/detail/view")
 	public String movieInfoView(
 			@RequestParam("movieId") int movieId
-			, @RequestParam(value="val" ,required=false) String val
+			/* , @RequestParam(value="val" ,required=false) String val */
+			, @RequestParam("val") String val
 			,Model model) {
 		
 		

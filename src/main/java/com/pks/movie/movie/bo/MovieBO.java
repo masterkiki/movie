@@ -48,4 +48,11 @@ public class MovieBO {
 	}
 	
 	
+	public int deleteMovie(int movieId) {
+		return movieDAO.deleteMovie(movieId);
+	}
+	
+	
+	
+	
 }

@@ -77,4 +77,11 @@
 			`id` = #{movieId}
 	
 	</select>
+	
+	<delete id="deleteMovie" parameterType="int">
+		DELETE FROM
+			`movie`
+		WHERE
+			`id`= #{movieId}
+	</delete>
 </mapper>
