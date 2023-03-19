@@ -23,7 +23,7 @@
 			<div>
 				<div class="movie-info d-flex">
 					<div class="movie-poster d-felx text-center">
-						<img src="${movie.imagePath }" class="w-75 h-75 mt-3">
+						<a href="http://localhost:8080/movieposters/%EA%B8%B0%EC%83%9D%EC%B6%A9_1678278977704/20230308_210525.png"><img src="${movie.imagePath }" class="w-75 h-75 mt-3"></a>
 					</div>
 					<div class="d-flex align-items-center">
 						<div class="info-detail">
