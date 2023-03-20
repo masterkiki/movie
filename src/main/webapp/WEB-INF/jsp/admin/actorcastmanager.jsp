@@ -67,6 +67,41 @@
 							
 						</table>						
 							
+						<div>
+						
+						<label>영화 선택</label>
+						<select onchange="if(this.value)location.href=(this.value);">
+							<option value="view?movieId=0">-영화를 선택해주세요</option>
+							<c:forEach var="movie" items="${movieList }">
+							<option value="view?movieId=${movie.id }">${movie.movietitle }</option>
+							</c:forEach>
+						</select>
+							<table class="table text-center">
+								<thead>
+									<tr>
+										<th>배우명</th>
+										<th>배역이름</th>
+									</tr>
+								</thead>
+							
+								<tbody>								
+										<c:forEach var="actor" items="${actorList}" varStatus="status">
+										<tr>
+											<td>${actor.actor}</td>
+											<c:forEach var="cast" items="${castList}">
+											<td>${cast.charactername}</td>
+											</c:forEach>
+										</tr>
+										</c:forEach>
+
+									  
+								</tbody>
+							</table>
+							
+							
+						</div>	
+						
+							
 					</div>
 					
 					
