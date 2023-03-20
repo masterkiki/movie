@@ -1,5 +1,6 @@
 package com.pks.movie.cast.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class CastBO {
 	@Autowired
 	private CastDAO castDAO;
 	
+	
 	public int addCast(
 			int movieId
 			, int actorId
@@ -22,6 +24,10 @@ public class CastBO {
 	}
 	
 	public List<Cast> getCharacterName(int moiveId) {
-		return castDAO.selectCastBtmoiveId(moiveId);
+		return castDAO.selectCastBymoiveId(moiveId);
+	}
+	
+	public Cast getCharacterName1(int moiveId) {
+		return castDAO.selectCastBymoiveId1(moiveId);
 	}
 }

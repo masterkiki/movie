@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pks.movie.actor.bo.ActorBO;
 import com.pks.movie.actor.model.Actor;
+import com.pks.movie.actor.model.ActorDetail;
 import com.pks.movie.cast.bo.CastBO;
 import com.pks.movie.cast.model.Cast;
 import com.pks.movie.movie.bo.MovieBO;
@@ -39,6 +40,8 @@ public class CastController {
 		List<Actor> actor = actorBO.getActorList(movieId);
 		List<Cast> castList = castBO.getCharacterName(movieId);
 		
+		List<ActorDetail> actorDetailList = actorBO.getActorDetailList(movieId);
+		model.addAttribute("actorDetailList" ,actorDetailList);
 		
 		model.addAttribute("movieList", movie);
 		model.addAttribute("castList",castList);

@@ -49,7 +49,7 @@
 										<button class="ml-1 btn btn-secondary btn-sm audienceUpdateBtn" data-movie-id="${movie.id }">갱신</button>
 									</td>
 									<td class="d-flex">
-										<input type="text" style="width:50%;" id="actorInput">
+										<input type="text" style="width:50%;" id="actorInput${movie.id }">
 										<div class="ml-2 image-upload">
 				   						 	<label for="actorPicInput">
 				        						<div class="upload-icon" id="actorPicuploadBtn"><i class="bi bi-image"></i></div>
@@ -133,11 +133,11 @@
 			
 			
 			$(".actoruploadBtn").on("click",function(){
-				let actor = $("#actorInput").val();
 				let movieId = $(this).data("movie-id");
 				
+				let actor = $("#actorInput"+movieId).val();
 				if(actor == ""){
-					alert("배우 이름을 입력해주세요");
+					alert(actor);
 					return;
 				}
 				

@@ -15,6 +15,7 @@ public interface CastDAO {
 			, @Param("actorId") int actorId
 			, @Param("charactername") String charactername);
 	
-	public List<Cast> selectCastBtmoiveId(@Param("movieId") int movieId);
+	public List<Cast> selectCastBymoiveId(@Param("movieId") int movieId);
+	public Cast selectCastBymoiveId1(@Param("movieId") int movieId);
 			
 }

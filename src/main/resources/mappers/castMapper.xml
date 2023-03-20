@@ -21,7 +21,20 @@
 	
 	</insert>
 	
-	<select id="selectCastBtmoiveId" parameterType="int" resultType="com.pks.movie.cast.model.Cast">
+	<select id="selectCastBymoiveId" parameterType="int" resultType="com.pks.movie.cast.model.Cast">
+		SELECT
+			`id`
+			, `actorId`
+			, `movieId`
+			, `charactername`
+		FROM
+			`casting`
+		WHERE
+			`movieId` = #{movieId}	
+	
+	</select>
+	
+		<select id="selectCastBymoiveId1" parameterType="int" resultType="com.pks.movie.cast.model.Cast">
 		SELECT
 			`id`
 			, `actorId`
