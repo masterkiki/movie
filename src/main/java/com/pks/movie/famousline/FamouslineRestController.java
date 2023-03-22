@@ -25,11 +25,12 @@ public class FamouslineRestController {
 			@RequestParam("userId") int userId
 			, @RequestParam("movieId") int movieId
 			, @RequestParam("actorId") int acotrId
+			, @RequestParam("castingId") int castingId
 			, @RequestParam("famousline") String famousline
 			, @RequestParam("explain") String explain
 			, Model model){
 		
-		int count = famouslineBO.addFamousLine(userId, movieId, acotrId, famousline, explain);
+		int count = famouslineBO.addFamousLine(userId, movieId, acotrId, castingId, famousline, explain);
 		
 		Map<String, String> result = new HashMap<>();
 		model.addAttribute("user",userId);

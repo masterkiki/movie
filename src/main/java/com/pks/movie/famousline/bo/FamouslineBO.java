@@ -16,10 +16,11 @@ public class FamouslineBO {
 			int userId
 			, int movieId
 			, int actorId
+			, int castingId
 			, String famousline
 			, String explain) {
 		
-		return famouslineDAO.insertFamousLine(userId, movieId, actorId, famousline, explain);
+		return famouslineDAO.insertFamousLine(userId, movieId, actorId, castingId, famousline, explain);
 		
 	}
 	

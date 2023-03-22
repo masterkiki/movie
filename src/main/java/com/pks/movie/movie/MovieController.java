@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pks.movie.actor.bo.ActorBO;
 import com.pks.movie.actor.model.Actor;
+import com.pks.movie.actor.model.ActorDetail;
 import com.pks.movie.movie.bo.MovieBO;
 import com.pks.movie.movie.model.Movie;
 import com.pks.movie.movie.model.MovieDetail;
 import com.pks.movie.user.bo.UserBO;
-import com.pks.movie.user.model.User;
 
 @Controller
 @RequestMapping("/movie")
@@ -69,11 +69,11 @@ public class MovieController {
 		
 		MovieDetail movie = movieBO.getMoiveById(movieId);
 		Actor actor = actorBO.getActorByMovieId(movieId);
-		
+		List<ActorDetail> actorDetail = actorBO.getActorDetailList(movieId);
 		
 		model.addAttribute("movie", movie);
 		model.addAttribute("actor", actor);
-		
+		model.addAttribute("actorDetail", actorDetail);
 		
 		List<Actor> actorList = actorBO.getActorList(movieId);
 		

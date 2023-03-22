@@ -4,6 +4,7 @@ public class ActorDetail {
 	
 	private int id;
 	private int moiveId;
+	private int actorId;
 	private String actor;
 	private int castingId;
 	private String charactername;
@@ -36,6 +37,12 @@ public class ActorDetail {
 	}
 	public void setCharactername(String charactername) {
 		this.charactername = charactername;
+	}
+	public int getActorId() {
+		return actorId;
+	}
+	public void setActorId(int actorId) {
+		this.actorId = actorId;
 	}
 	
 	

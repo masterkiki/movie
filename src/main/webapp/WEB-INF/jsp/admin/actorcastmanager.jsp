@@ -51,7 +51,7 @@
 									</td>
 									<td>
 										<select class="actorlist text-center form-control">
-											<option>-배우를 선택해주세여요-</option>
+											<option value="">-배우를 선택해주세여요-</option>
 										</select>
 									</td>
 									
@@ -140,17 +140,22 @@
 			});
 			
 			
-			$(".movieList").on("change",function(){
+			$(".movieList").on("click",function(){
 				var movieId = $(this).val();
+				
 
 				$.ajax({
 					type:"get"
 					, url:"/actorlist"
 					, data:{"movieId":movieId}
 					, success:function(data){
+						$(".actorlist").empty();
+						var defaultoption = "<option>-배우를선택해주세요-</option>"
+						$(".actorlist").append(defaultoption);
 						for(var i = 0; i < data.length; i++){
-							
+						
 						var option = "<option value='"+ data[i].id +"'>" + data[i].actor + "</option>";
+						
 						$(".actorlist").append(option);
 						}
 						

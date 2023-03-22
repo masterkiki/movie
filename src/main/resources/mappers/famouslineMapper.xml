@@ -12,6 +12,7 @@
 			`userId`
 			, `movieId`
 			, `actorId`
+			, `castingId`
 			, `famousline`
 			, `explain`
 			, `createdAt`
@@ -22,6 +23,7 @@
 			#{userId}
 			, #{movieId}
 			, #{actorId}
+			, #{castingId}
 			, #{famousline}
 			, #{explain}
 			,now()

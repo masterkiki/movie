@@ -96,8 +96,8 @@
 								<div class="col-10">
 									<select class="form-control" id="actorSelect">
 											<option selected value="">-배우를 선택하세요-</option>
-									<c:forEach var="actor" items="${actorList}">
-											<option value="${actor.id }">${actor.actor }</option>
+									<c:forEach var="actor" items="${actorDetail}">
+											<option value="${actor.castingId }" value1="${actor.id }">${actor.actor }(${actor.charactername })</option>
 									</c:forEach>		
 									</select>
 									
@@ -155,11 +155,15 @@
 			
 			
 			$("#famouslineAddBtn").on("click",function(){
-				let actorselect = $("#actorSelect option:selected").val();
+				let actorIdselect = $("#actorSelect option:selected").attr("value1");
+				let castingIdselect = $("#actorSelect option:selected").attr("value");
 				let famousline = $("#famouslineInput").val();
 				let explain = $("#explainInput").val();
+				let userId = ${userId};
+				alert(userId);
+		
 				
-				if(actorselect == ""){
+  				if(actorselect == ""){
 					alert("배우를 선택해주세요");
 					return;
 				}
@@ -171,12 +175,12 @@
 				if(explain == ""){
 					alert("상세 설명을 입력해주세요");
 					return;
-				}
+				} 
 				
-				$.ajax({
+				 $.ajax({
 					type:"post"
 					, url:"/famousline/add"
-					, data:{"userId":${userId} , "movieId":${movie.id} , "actorId":actorselect , "famousline":famousline, "explain":explain}
+					, data:{"userId":${userId} , "movieId":${movie.id} , "actorId":actorIdselect ,"castingId":castingIdselect, "famousline":famousline, "explain":explain}
 					, success:function(data){
 						if(data.result == "success"){
 							location.reload();
@@ -189,7 +193,7 @@
 						alert("명대사 등록 에러");
 					}
 					
-				});
+				});  
 				
 			});
 			
