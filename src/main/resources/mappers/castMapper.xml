@@ -21,7 +21,7 @@
 	
 	</insert>
 	
-	<select id="selectCastBymoiveId" parameterType="int" resultType="com.pks.movie.cast.model.Cast">
+	<select id="selectCastBymoiveId" parameterType="map" resultType="com.pks.movie.cast.model.Cast">
 		SELECT
 			`id`
 			, `actorId`
@@ -34,7 +34,8 @@
 	
 	</select>
 	
-		<select id="selectCastBymoiveId1" parameterType="int" resultType="com.pks.movie.cast.model.Cast">
+	
+	<select id="selectCastBymoiveId1" parameterType="map" resultType="com.pks.movie.cast.model.Cast">
 		SELECT
 			`id`
 			, `actorId`
@@ -43,8 +44,7 @@
 		FROM
 			`casting`
 		WHERE
-			`movieId` = #{movieId}	
-	
+			`movieId` = #{movieId}
 	</select>
 	
 </mapper>

@@ -85,10 +85,10 @@
 								</thead>
 							
 								<tbody>								
-										<c:forEach var="actor" items="${actorDetailList}" varStatus="status">
+										<c:forEach var="actor" items="${actorDetailList}">
 										<tr>
 											<td>${actor.actor}</td>
-											<td>${actor.charactername}</td>
+											<td>${actor.charactername }</td>
 										</tr>
 										</c:forEach>
 

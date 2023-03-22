@@ -30,4 +30,5 @@ public class CastBO {
 	public Cast getCharacterName1(int moiveId) {
 		return castDAO.selectCastBymoiveId1(moiveId);
 	}
+	
 }
