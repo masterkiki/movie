@@ -95,7 +95,7 @@
 							<div class="famousline-box d-flex">
 								<div class="col-10">
 									<select class="form-control" id="actorSelect">
-											<option selected value="">-배우를 선택하세요-</option>
+											<option selected value="" value1="">-배우를 선택하세요-</option>
 									<c:forEach var="actor" items="${actorDetail}">
 											<option value="${actor.castingId }" value1="${actor.id }">${actor.actor }(${actor.charactername })</option>
 									</c:forEach>		
@@ -105,7 +105,7 @@
 									<input type="text" class="form-control" placeholder="상세 설명을 입력하세요" id="explainInput">
 								</div>
 								<div class="col-2">
-									<button type="button" class="btn btn-dark w-100 h-100" id="famouslineAddBtn">등록</button>
+									<input type="button" class="btn btn-dark w-100 h-100" id="famouslineAddBtn" value="등록"></input>
 								</div>
 							</div>
 						</div>
@@ -159,11 +159,9 @@
 				let castingIdselect = $("#actorSelect option:selected").attr("value");
 				let famousline = $("#famouslineInput").val();
 				let explain = $("#explainInput").val();
-				let userId = ${userId};
-				alert(userId);
-		
+			
 				
-  				if(actorselect == ""){
+  				if(actorIdselect == ""){
 					alert("배우를 선택해주세요");
 					return;
 				}
@@ -180,7 +178,7 @@
 				 $.ajax({
 					type:"post"
 					, url:"/famousline/add"
-					, data:{"userId":${userId} , "movieId":${movie.id} , "actorId":actorIdselect ,"castingId":castingIdselect, "famousline":famousline, "explain":explain}
+					, data:{"movieId":${movie.id} , "actorId":actorIdselect ,"castingId":castingIdselect, "famousline":famousline, "explain":explain}
 					, success:function(data){
 						if(data.result == "success"){
 							location.reload();

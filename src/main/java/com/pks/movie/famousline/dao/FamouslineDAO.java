@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 public interface FamouslineDAO {
 
 	public int insertFamousLine(
-			@Param("userId") int userId
-			, @Param("movieId") int movieId
+			@Param("movieId") int movieId
 			, @Param("actorId") int actorId
 			, @Param("castingId") int castingId
 			, @Param("famousline") String famousline

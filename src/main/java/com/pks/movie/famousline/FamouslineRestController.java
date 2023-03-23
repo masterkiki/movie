@@ -3,8 +3,9 @@ package com.pks.movie.famousline;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,24 +23,32 @@ public class FamouslineRestController {
 	
 	@PostMapping("/add")
 	public Map<String, String> addFamousLine(
-			@RequestParam("userId") int userId
-			, @RequestParam("movieId") int movieId
+			@RequestParam("movieId") int movieId
 			, @RequestParam("actorId") int acotrId
 			, @RequestParam("castingId") int castingId
 			, @RequestParam("famousline") String famousline
 			, @RequestParam("explain") String explain
-			, Model model){
+			, HttpSession session){
 		
-		int count = famouslineBO.addFamousLine(userId, movieId, acotrId, castingId, famousline, explain);
-		
+		int signinId = (Integer)session.getAttribute("userId");
+		Map<String, String> login = new HashMap<>();
 		Map<String, String> result = new HashMap<>();
-		model.addAttribute("user",userId);
 		
-		if(count == 1) {
-			result.put("result", "success");
+		if(signinId == 0) {
+			login.put("login", "fail");
 		} else {
-			result.put("result", "fail");
+			int count = famouslineBO.addFamousLine(movieId, acotrId, castingId, famousline, explain);
+			
+			
+			if(count == 1) {
+				result.put("result", "success");
+			} else {
+				result.put("result", "fail");
+			}
 		}
+		
+
+		
 	
 		return result;
 	
