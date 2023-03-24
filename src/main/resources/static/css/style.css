@@ -103,12 +103,17 @@ section > .movie-review{
 
 .movie-info{
 	width:1000px;
-	height:180px;
+	
+}
+
+.movie-info-box{
+	width:800px;
+	height:350px;
 }
 
 .movie-poster{
-	width:200px;
-	height:200px;
+	width:300px;
+	height:300px;
 }
 
 .info-detail{
@@ -135,7 +140,26 @@ section > .movie-review{
 	width:800px;
 }
 
+.main-info{
+	width:800px;
+}
 
+.actor-image-box{
+	width:50px;
+	height:60px;
+}
  
  
+ .left-box{
+ 	width:600px;
+ 	height:70px;
+ }
  
+  
+ .right-box{
+ 	width:200px;
+ 	height:70px;
+ }
+/*  .actor-famousline{
+ 	height:70px;
+ } */

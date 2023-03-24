@@ -11,10 +11,10 @@
 		<div class="login-bar d-flex">
 				<c:if test="${not empty userId }">
 					<div class="mr-3">${nickName }</div>
-					<button class="btn btn-dark"><a href="/user/signout/view" class="text-white">로그아웃</a></button>
+					<button class="btn btn-dark"  onclick="location.href='/user/signout/view'">로그아웃</button>
 				</c:if>
 				<c:if test="${empty userId }">
-					<button class="btn btn-secondary"><a href="/user/signin/view" class="text-white">로그인</a></button>
+					<button class="btn btn-sm btn-secondary" onclick="location.href='/user/signin/view'">로그인</button>
 				</c:if>
 		</div>
 			<div class="input-group ml-5 col-3">

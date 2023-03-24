@@ -43,24 +43,7 @@ public class ActorBO {
 
 		List<Cast> castList = castBO.getCharacterName(movieId);
 		
-/*		 for(Actor actor:actorList) { ActorDetail actorDetail = new ActorDetail();
-		 
-		 List<Cast> cast = castBO.getCharacterName(movieId);
-		 
-		 actorDetail.setId(actor.getId()); 
-		 actorDetail.setMoiveId(actor.getMovieId());
-		 actorDetail.setActor(actor.getActor());
-		 
-		 ActorDetailList.add(actorDetail); }
-		 
-		 List<Cast> castList = castBO.getCharacterName(movieId);
-		
-		 for(Cast cast:castList) { ActorDetail castdetail = new ActorDetail();
-		 
-		 castdetail.setCharactername(cast.getCharactername());
-		 
-		 ActorDetailList.add(castdetail); }
-*/		 
+
 
 		for (int i = 0; i < actorList.size(); i++) {
 			ActorDetail actorDetail = new ActorDetail();

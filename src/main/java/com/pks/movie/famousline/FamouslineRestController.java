@@ -31,22 +31,27 @@ public class FamouslineRestController {
 			, HttpSession session){
 		
 		Map<String, String> result = new HashMap<>();
-		int userId = (Integer)session.getAttribute("userId");
+		Integer userId = (Integer)session.getAttribute("userId");
 
+		// 1. 로그인 유무
+		// 2. 로그인 되있는상태면 인서트 정보
+		// ("login":"success" , "result":"success")
 		
-//		if(session.getAttribute("userId") == null) {
-//			result.put("login", "fail");
-//		} else {
-			
-		int count = famouslineBO.addFamousLine(userId, movieId, acotrId, castingId, famousline, explain);
-			
-		if(count == 1) {
-				result.put("result", "success");
+		
+		
+		if(userId == null) {
+			result.put("login", "fail");
 		} else {
-				result.put("result", "fail");
-		}
+				
+			int count = famouslineBO.addFamousLine(userId, movieId, acotrId, castingId, famousline, explain);
+				
+			if(count == 1) {
+					result.put("result", "success");
+			} else {
+					result.put("result", "fail");
+			}
 			
-//		}
+		}
 		
 
 		

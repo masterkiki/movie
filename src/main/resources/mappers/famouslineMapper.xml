@@ -31,6 +31,25 @@
 		)
 		
 	</insert>
+	
+	<select id="selectFamousLine" parameterType="int" resultType="com.pks.movie.famousline.model.Famousline">
+		SELECT
+			`id`
+			, `userId`
+			, `movieId`
+			, `actorId`
+			, `castingId`
+			, `famousline`
+			, `explain`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`famousline`
+		WHERE
+			`movieId` = #{movieId}
+			
+			
+	</select>
 
 
 </mapper>

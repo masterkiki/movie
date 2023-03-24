@@ -20,35 +20,39 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<div class="d-flex">
 			<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>
-			<div>
-				<div class="movie-info d-flex">
-					<div class="movie-poster d-felx text-center">
-						<a href="http://localhost:8080/movieposters/%EA%B8%B0%EC%83%9D%EC%B6%A9_1678278977704/20230308_210525.png"><img src="${movie.imagePath }" class="w-75 h-75 mt-3"></a>
-					</div>
-					<div class="d-flex align-items-center">
-						<div class="info-detail">
-							<div><b>${movie.movietitle }</b></div>
-							<div>평점  ★★★★★ 10     내평점 ☆☆☆☆☆  작성하러가기></div>
-							<div>${movie.genre } | ${movie.country } | 120분 | ${movie.releasedate } | ${movie.audience}명</div>
-							<div class="d-flex">
-								<div><b class="mr-2">감독</b>${movie.director }</div>
-								<div class="ml-3"><b class="mr-2">배우</b>${actor.actor }</div>
+			<div class="contents">
+				<div class="movie-info">
+					<div class="d-flex justify-content-center">
+						<div class="movie-info-box d-flex justify-content-center">
+							<div class="d-flex align-items-center">
+								<div>
+									<div><b>${movie.movietitle }</b></div>
+									<div>평점  ★★★★★ 10     내평점 ☆☆☆☆☆  작성하러가기></div>
+									<div>${movie.genre } | ${movie.country } | 120분 | ${movie.releasedate } | ${movie.audience}명</div>
+									<div class="d-flex">
+										<div><b class="mr-2">감독</b>${movie.director }</div>
+										<div class="ml-3"><b class="mr-2">배우</b>${actor.actor }</div>
+									</div>
+								</div>
+							</div>
+							<div class="movie-poster d-felx text-center">
+								<a href="http://localhost:8080/movieposters/%EA%B8%B0%EC%83%9D%EC%B6%A9_1678278977704/20230308_210525.png"><img src="${movie.imagePath }" class="w-100 h-100 mt-3"></a>
 							</div>
 						</div>
 					</div>
+					<hr class="ml-3">
+				</div>
+				<div class="d-flex justify-content-center">
+					<ul class="nav ml-3 bg-dark id="menu">
+						<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=1" name="submenu" class="nav-link text-white" id="1">주요정보</a></li>
+						<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="2">배우/제작진</a></li>
+						<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="3">평점</a></li>
+						<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=4" name="submenu" class="nav-link text-white" id="4">명대사</a></li>
+					</ul>
 				</div>
 				<hr class="ml-3">
-					<div class="d-flex justify-content-center">
-						<ul class="nav ml-3 bg-dark id="menu">
-							<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=1" name="submenu" class="nav-link text-white" id="1">주요정보</a></li>
-							<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="2">배우/제작진</a></li>
-							<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="3">평점</a></li>
-							<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=4" name="submenu" class="nav-link text-white" id="4">명대사</a></li>
-						</ul>
-					</div>
-				<hr class="ml-3">
 				<c:if test="${param.val eq '1' }">
-				<div class="ml-3">
+				<div class="ml-3 d-flex">
 					<div class="main-info">
 						<div class="d-flex">
 							<div class="movie-story">
@@ -59,15 +63,15 @@
 								</div>
 							</div>
 							</div>
-							<div class="famous-line">
-								<div class="container mt-2">
+						</div>
+						<div class="famous-line">
+							<div class="container mt-2">
+								<div class="d-flex align-items-center">
 									<div class="d-flex align-items-center">
-										<div class="d-flex align-items-center">
-											<h4><b>명대사</b></h4>
-										</div>
-										<div class="ml-3">
-											<button type="button" class="btn btn-white">명대사 쓰기</button>
-										</div>
+										<h4><b>명대사</b></h4>
+									</div>
+									<div class="ml-3">
+										<button type="button" class="btn btn-white" onclick="location.href='/movie/detail/view?movieId=${movie.id }&val=4'">명대사 쓰기</button>
 									</div>
 								</div>
 							</div>
@@ -92,32 +96,73 @@
 							<div>
 								<h4><b>명대사</b></h4>
 							</div>
-							<div class="famousline-box d-flex">
-								<div class="col-10">
-									<select class="form-control" id="actorSelect">
-											<option selected value="" value1="">-배우를 선택하세요-</option>
-									<c:forEach var="actor" items="${actorDetail}">
-											<option value="${actor.castingId }" value1="${actor.id }">${actor.actor }(${actor.charactername })</option>
-									</c:forEach>		
-									</select>
-									
-									<input type="text" class="form-control" placeholder="명대사를 입력하세요" id="famouslineInput">
-									<input type="text" class="form-control" placeholder="상세 설명을 입력하세요" id="explainInput">
+							<form>
+								<div class="famousline-box d-flex">
+									<div class="col-10">
+										<select class="form-control" id="actorSelect">
+												<option selected value="" value1="">-배우를 선택하세요-</option>
+										<c:forEach var="actor" items="${actorDetail}">
+												<option value="${actor.castingId }" value1="${actor.id }">${actor.actor }(${actor.charactername })</option>
+										</c:forEach>		
+										</select>
+										
+										<input type="text" class="form-control" placeholder="명대사를 입력하세요" id="famouslineInput">
+										<input type="text" class="form-control" placeholder="상세 설명을 입력하세요" id="explainInput">
+									</div>
+									<div class="col-2">
+										<input type="button" class="btn btn-dark w-100 h-100" id="famouslineAddBtn" value="등록"></input>
+									</div>
 								</div>
-								<div class="col-2">
-									<input type="button" class="btn btn-dark w-100 h-100" id="famouslineAddBtn" value="등록"></input>
+							</form>
+							<br><br>
+							
+							<div class="d-flex justify-content-between">
+								<span> 총 xxx건</span>
+								<select>
+									<option selected>등록순</option>
+									<option>인기순</option>
+								</select>
+							</div>
+							<hr>
+							<div class="actor-famousline d-flex">
+								<div class="d-flex left-box align-items-center">
+									<div class="actor-image-box bg-secondary"></div>
+									<div class="ml-3">
+										<div>
+											<b>나 이대 나온 여자야</b>
+										</div>
+										<div>
+											<span class="text-danger">정마담</span>
+											<span>｜ 김혜수</span>
+										</div>
+									</div>
+								</div>
+								<div class="right-box">
+									<div class="d-flex justify-content-end">
+										<div class="d-flex align-items-center">
+											<span">닉네임</span>
+										</div>
+										<button type="button" class="btn btn-sm btn-secondary ml-2">추천</button>
+										<div class="d-flex align-items-center ml-2 text-danger">
+											<span>1129</span>
+										</div>
+									</div>
+									<div class="text-right">
+										<span style="font-size:3px;">2023.04.32</span>
+									</div>
 								</div>
 							</div>
+							
 						</div>
 					</div>
 				</div>
 				
 				<!--  /명대사 메뉴  -->
 				</c:if>
+				<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 				</div>
 			</div>
 		</div>
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	
 	
@@ -133,12 +178,6 @@
 					$(".famousline-page").removeClass("d-none");
 				}
 				
-/* 				$.ajax({
-					type:"post"
-					, url:"/movie/detailview"
-					, data:{"val":getId}
-				});
- */
 			});
 			
 			
@@ -180,10 +219,15 @@
 					, url:"/famousline/add"
 					, data:{"movieId":${movie.id} , "actorId":actorIdselect ,"castingId":castingIdselect, "famousline":famousline, "explain":explain}
 				 	, success:function(data){
-						if(data.result == "success"){
-							location.reload();
+						if(data.login == "fail"){
+							alert("로그인을 진행해주세요");
+							location.href="/user/signin/view";
 						} else	{
-							alert("명대사 등록에러");
+							if(data.result == "success"){
+								location.reload();
+							} else{
+								alert("명대사 등록 실패");
+							}
 						}
 					}
 					, error:function(){
