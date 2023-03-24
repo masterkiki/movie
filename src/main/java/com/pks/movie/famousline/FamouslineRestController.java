@@ -30,22 +30,23 @@ public class FamouslineRestController {
 			, @RequestParam("explain") String explain
 			, HttpSession session){
 		
-		int signinId = (Integer)session.getAttribute("userId");
-		Map<String, String> login = new HashMap<>();
 		Map<String, String> result = new HashMap<>();
+		int userId = (Integer)session.getAttribute("userId");
+
 		
-		if(signinId == 0) {
-			login.put("login", "fail");
-		} else {
-			int count = famouslineBO.addFamousLine(movieId, acotrId, castingId, famousline, explain);
+//		if(session.getAttribute("userId") == null) {
+//			result.put("login", "fail");
+//		} else {
 			
+		int count = famouslineBO.addFamousLine(userId, movieId, acotrId, castingId, famousline, explain);
 			
-			if(count == 1) {
+		if(count == 1) {
 				result.put("result", "success");
-			} else {
+		} else {
 				result.put("result", "fail");
-			}
 		}
+			
+//		}
 		
 
 		

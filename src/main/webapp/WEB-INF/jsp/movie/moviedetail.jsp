@@ -161,7 +161,7 @@
 				let explain = $("#explainInput").val();
 			
 				
-  				if(actorIdselect == ""){
+   				if(actorIdselect == ""){
 					alert("배우를 선택해주세요");
 					return;
 				}
@@ -173,19 +173,18 @@
 				if(explain == ""){
 					alert("상세 설명을 입력해주세요");
 					return;
-				} 
+				}  
 				
 				 $.ajax({
 					type:"post"
 					, url:"/famousline/add"
 					, data:{"movieId":${movie.id} , "actorId":actorIdselect ,"castingId":castingIdselect, "famousline":famousline, "explain":explain}
-					, success:function(data){
+				 	, success:function(data){
 						if(data.result == "success"){
 							location.reload();
-						} else{
-							alert("명대사 등록 실패");
+						} else	{
+							alert("명대사 등록에러");
 						}
-						
 					}
 					, error:function(){
 						alert("명대사 등록 에러");
