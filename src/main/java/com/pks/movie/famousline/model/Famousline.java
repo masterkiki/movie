@@ -9,9 +9,16 @@ public class Famousline {
 	private int moiveId;
 	private int actorId;
 	private int castingId;
+	private String famousline;
 	private String explain;
 	private Date createdAt;
 	private Date updatedAt;
+	public String getFamousline() {
+		return famousline;
+	}
+	public void setFamousline(String famousline) {
+		this.famousline = famousline;
+	}
 	public int getId() {
 		return id;
 	}

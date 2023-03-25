@@ -3,6 +3,8 @@ package com.pks.movie.actor.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import com.pks.movie.actor.model.Actor;
 import com.pks.movie.actor.model.ActorDetail;
 import com.pks.movie.cast.bo.CastBO;
 import com.pks.movie.cast.model.Cast;
+import com.pks.movie.famousline.bo.FamouslineBO;
+import com.pks.movie.famousline.model.Famousline;
 
 @Service
 public class ActorBO {
@@ -20,6 +24,9 @@ public class ActorBO {
 
 	@Autowired
 	private CastBO castBO;
+	
+	@Autowired
+	private FamouslineBO famouslineBO;
 
 	public int addActor(int movieId, String actor) {
 
@@ -43,8 +50,9 @@ public class ActorBO {
 
 		List<Cast> castList = castBO.getCharacterName(movieId);
 		
+		List<Famousline> famouslineList = famouslineBO.selectFamousLine(movieId);
 
-
+		
 		for (int i = 0; i < actorList.size(); i++) {
 			ActorDetail actorDetail = new ActorDetail();
 			
@@ -56,6 +64,13 @@ public class ActorBO {
 				if(actorList.get(i).getId() == castList.get(j).getActorId()) {
 					actorDetail.setCharactername(castList.get(j).getCharactername());
 					actorDetail.setCastingId(castList.get(j).getId());
+					for(int k = 0; k < famouslineList.size(); k++) {
+						if(castList.get(j).getId() == famouslineList.get(k).getCastingId()) {
+							
+							actorDetail.setFamouslineId(famouslineList.get(k).getId());
+							actorDetail.setFamousline(famouslineList.get(k).getFamousline());
+						}
+					}
 				}
 			}
 			

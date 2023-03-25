@@ -44,6 +44,11 @@ header > .login-menu{
 	height:60px;
 }
 
+nav{
+	 position: fixed;
+	 height:1000px;
+}
+
 .login-bar{
 	height:30px;
 }
@@ -122,12 +127,12 @@ section > .movie-review{
 }
 
 .movie-story{
-	width:500px;
+	width:800px;
 /* 	height:300px; */
 }
 
 .famous-line{
-	width:500px;
+	width:800px;
 /* 	height:300px; */
 }
 

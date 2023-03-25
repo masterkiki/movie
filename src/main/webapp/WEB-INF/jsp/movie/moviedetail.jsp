@@ -52,7 +52,7 @@
 				</div>
 				<hr class="ml-3">
 				<c:if test="${param.val eq '1' }">
-				<div class="ml-3 d-flex">
+				<div class="ml-3 d-flex justify-content-center">
 					<div class="main-info">
 						<div class="d-flex">
 							<div class="movie-story">
@@ -64,7 +64,7 @@
 							</div>
 							</div>
 						</div>
-						<div class="famous-line">
+						<div class="famous-line mt-4">
 							<div class="container mt-2">
 								<div class="d-flex align-items-center">
 									<div class="d-flex align-items-center">
@@ -124,23 +124,24 @@
 								</select>
 							</div>
 							<hr>
+							<c:forEach var="actor" items="${actorDetail }">
 							<div class="actor-famousline d-flex">
 								<div class="d-flex left-box align-items-center">
 									<div class="actor-image-box bg-secondary"></div>
 									<div class="ml-3">
 										<div>
-											<b>나 이대 나온 여자야</b>
+											<b>${actor.famousline }</b>
 										</div>
 										<div>
-											<span class="text-danger">정마담</span>
-											<span>｜ 김혜수</span>
+											<span class="text-danger">${actor.charactername }</span>
+											<span>｜${actor.actor } </span>
 										</div>
 									</div>
 								</div>
 								<div class="right-box">
 									<div class="d-flex justify-content-end">
 										<div class="d-flex align-items-center">
-											<span">닉네임</span>
+											<span">${nickname }</span>
 										</div>
 										<button type="button" class="btn btn-sm btn-secondary ml-2">추천</button>
 										<div class="d-flex align-items-center ml-2 text-danger">
@@ -152,7 +153,7 @@
 									</div>
 								</div>
 							</div>
-							
+							</c:forEach>
 						</div>
 					</div>
 				</div>
