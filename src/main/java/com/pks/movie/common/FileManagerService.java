@@ -86,5 +86,37 @@ public class FileManagerService {
 		
 	}
 	
+	public static String saveFileActor(String actor, MultipartFile file) {
+		
+		String directoryName = "/" + actor + "_" + System.currentTimeMillis() + "/";
+		
+		String directoryPath = FILE_UPLOAD_PATH + directoryName;
+		File directory = new File(directoryPath);
+		if(directory.mkdir() == false) {
+			
+			logger.error("savefile : 디렉토리 생성 실패 " + directoryPath);
+			return null;
+		}
+		
+		String filePath = null;
+		
+		try {
+			byte[] bytes = file.getBytes();
+			
+			filePath = directoryPath + file.getOriginalFilename();
+			Path path = Paths.get(filePath);
+			Files.write(path, bytes);
+		
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			logger.error("savefile 파일 생성 에러 - " + filePath);
+			return null;
+		}
+		
+		return "/movieposters" + directoryName + file.getOriginalFilename();
+	}
+	
+	
 	
 }

@@ -10,11 +10,13 @@
 		(
 			`movieId`
 			, `actor`
+			, `imagePath`
 		)
 		VALUE
 		(
 			#{movieId}
 			, #{actor}
+			, #{imagePath}
 		)
 		
 	</insert>
@@ -36,6 +38,7 @@
 			`id`
 			, `movieId`
 			, `actor`
+			, `imagePath`
 		FROM
 			`actor`
 		WHERE

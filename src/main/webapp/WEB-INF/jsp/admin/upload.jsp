@@ -17,78 +17,78 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
-<body>
+<body class="backgroud">
 
 	<div id="wrap">
-		<c:import url="/WEB-INF/jsp/include/header.jsp"></c:import>
+		<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>
 		<div class="d-flex">
-			<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>
-			
-			<section class="contents d-flex justify-content-center align-items-center ">
-				<div>
-					<h4>영화 등록</h4>
-					<div class="d-flex align-items-center mt-4">
-						<label class="col-3">영화 제목</label>
-						<input type="text" class="form-control col-3" id="titleInput">
-						
-						<label class="col-2 text-center">장르</label>
-						<select class="form-control" style="width:120px;font-size:14px;" id="genreSelector">
-							<option selected>-장르 선택-</option>
-							<option>공포</option>
-							<option>스릴러</option>
-							<option>코미디</option>
-							<option>다큐</option>
-							<option>판타지</option>
-							<option>드라마</option>
-							<option>액션</option>
-							<option>범죄</option>
-						</select>
-						
-					</div>
-					<div class="d-flex align-items-center mt-4">
-						<label class="col-3 text-center ">개봉일</label>
-						<input type="text" class="form-control col-3" id="releasedateInput">
-
-						<label class="col-2 text-center">국가</label>
-						<select class="form-control"  style="width:120px;font-size:14px;" id="countrySelector">
-							<option selected>-국가 선택-</option>
-							<option>한국</option>
-							<option>미국</option>
-							<option>중국</option>
-							<option>독일</option>
-							<option>프랑스</option>
-							<option>일본</option>
-						</select>
-						
+			<div>
+				<c:import url="/WEB-INF/jsp/include/header.jsp"></c:import>
+				<section class="movieupload d-flex justify-content-center align-items-center bg-white">
+					<div>
+						<h4>영화 등록</h4>
+						<div class="d-flex align-items-center mt-4">
+							<label class="col-3">영화 제목</label>
+							<input type="text" class="form-control col-3" id="titleInput">
+							
+							<label class="col-2 text-center">장르</label>
+							<select class="form-control" style="width:120px;font-size:14px;" id="genreSelector">
+								<option selected>-장르 선택-</option>
+								<option>공포</option>
+								<option>스릴러</option>
+								<option>코미디</option>
+								<option>다큐</option>
+								<option>판타지</option>
+								<option>드라마</option>
+								<option>액션</option>
+								<option>범죄</option>
+							</select>
+							
+						</div>
+						<div class="d-flex align-items-center mt-4">
+							<label class="col-3 text-center ">개봉일</label>
+							<input type="text" class="form-control col-3" id="releasedateInput">
 	
-					</div>
-					
-					<div class="d-flex align-items-center mt-4">
-						<label class="col-3 text-center">감독</label>
-						<input type="text" class="form-control col-3" id="directorInput">
-						
-						
-						<label class="col-3 ml-1">포스터 등록</label>
-							<div class="image-upload">
-	   						 	<label for="posterInput">
-	        						<div class="upload-icon" id="posteruploadBtn"><i class="bi bi-image"></i></div>
-	    						</label>
-	    						<input id="posterInput" type="file" style="display: none;"/>
-							</div>						
-					</div>
-					
-					<div>
-						<label class="col-2 text-center">줄거리</label>
-						<textarea class="ml-4 form-control" style="width:95%;" id="storyInput"></textarea>
-					</div>
-					<div>
-						<button class="mt-3 btn btn-primary" style="float:right;" id="nextBtn">등록</button>
-					</div>
-				</div>
-			</section>
-		</div>
+							<label class="col-2 text-center">국가</label>
+							<select class="form-control"  style="width:120px;font-size:14px;" id="countrySelector">
+								<option selected>-국가 선택-</option>
+								<option>한국</option>
+								<option>미국</option>
+								<option>중국</option>
+								<option>독일</option>
+								<option>프랑스</option>
+								<option>일본</option>
+							</select>
+							
 		
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"></c:import>
+						</div>
+						
+						<div class="d-flex align-items-center mt-4">
+							<label class="col-3 text-center">감독</label>
+							<input type="text" class="form-control col-3" id="directorInput">
+							
+							
+							<label class="col-3 ml-1">포스터 등록</label>
+								<div class="image-upload">
+		   						 	<label for="posterInput">
+		        						<div class="upload-icon" id="posteruploadBtn"><i class="bi bi-image"></i></div>
+		    						</label>
+		    						<input id="posterInput" type="file" style="display: none;"/>
+								</div>						
+						</div>
+						
+						<div>
+							<label class="col-2 text-center">줄거리</label>
+							<textarea class="ml-4 form-control" style="width:95%;" id="storyInput"></textarea>
+						</div>
+						<div>
+							<button class="mt-3 btn btn-primary" style="float:right;" id="nextBtn">등록</button>
+						</div>
+					</div>
+				</section>
+			</div>	
+		</div>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 
 	<script>

@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+.backgroud{
+	background-color:#808080;
+	background-size: cover;
+   	height: 100vh;
+    width: 100vw;
+}
+
 #wrap{
 	width:1200px;
 	height:800px;
@@ -31,6 +38,7 @@ section > .signup-box{
 
 header{
 	width:1200px;
+	padding-left: 200px;
 	/* height:80px; */
 }
 
@@ -41,13 +49,14 @@ header > .logo{
 
 header > .login-menu{
 	width:1000px;
-	height:60px;
+	height:80px;
+	
 }
 
 nav{
 	 position: fixed;
-	 height:1000px;
-}
+	 height:1200px;
+} 
 
 .login-bar{
 	height:30px;
@@ -60,15 +69,32 @@ nav{
 
 .contents{
 	width:1000px;
-	height:800px;
+	margin-left: 200px;
+/* 	height:800px; */
 }
 
-.upload{
+.contents1{
+	margin-left: 180px;
+	padding-top:50px;
+	padding-bottom:100px;
+	
+}
+.movieupload{
 	width:1000px;
+	margin-left: 200px;
+	padding-top:50px;
+	padding-bottom:100px;
 }
 
 section > .movie-list{
 	width:1000px;
+}
+
+.movielist{
+	width:1200px;
+	margin-left: 200.3px;
+	padding-top:50px;
+	padding-bottom:100px;
 }
 
 .poster-box{
@@ -98,6 +124,7 @@ section > .movie-list{
 section > .movie-review{
 	width:1000px;
 	height:400px;
+	
 }
  textarea {
     width: 50%;
@@ -118,12 +145,20 @@ section > .movie-review{
 
 .movie-poster{
 	width:300px;
-	height:300px;
+	height:350px;
 }
 
 .info-detail{
 /* 	width:800px;
 	height:200px; */
+}
+
+.detail-menu{
+	width:900px;
+	border-style:solid;
+	border-width: 1.5px 0px 0.1px 0px;
+	margin-left: 90px;
+	
 }
 
 .movie-story{
@@ -168,3 +203,11 @@ section > .movie-review{
 /*  .actor-famousline{
  	height:70px;
  } */
+ 
+ .actorcastadd{
+ 	margin-left:250px;
+ }
+ 
+ footer{
+ 		margin-left: 100.3px;
+ }

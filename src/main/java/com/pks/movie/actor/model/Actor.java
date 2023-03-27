@@ -5,6 +5,13 @@ public class Actor {
 	private int id;
 	private int movieId;
 	private String actor;
+	private String imagePath;
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public int getId() {
 		return id;
 	}

@@ -12,6 +12,13 @@ public class ActorDetail {
 	private String charactername;
 	private int famouslineId;
 	private String famousline;
+	private String imagePath;
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	private String explain;
 	private Date createdAt;
 	

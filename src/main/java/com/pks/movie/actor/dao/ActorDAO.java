@@ -12,7 +12,8 @@ public interface ActorDAO {
 
 	public int addActor(
 			@Param("movieId") int moiveId
-			,@Param("actor") String actor);
+			, @Param("actor") String actor
+			, @Param("imagePath") String imagePath);
 	
 	
 	public Actor selectActorByMovieId(@Param("movieId") int movieId);

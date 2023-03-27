@@ -15,51 +15,50 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
-<body>
-	<div id="wrap" class>
-	
-		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
+<body class="backgroud">
+	<div id="wrap">
+		<div class="d-flex">	
+			<c:import url="/WEB-INF/jsp/include/nav.jsp"/>
+			<div>
+				<c:import url="/WEB-INF/jsp/include/header.jsp"/>
+				<div class="d-flex justify-content-center bg-white">
+					<section class="contents">
+						<div class="movie-list bg-dark">
+							<div class="d-flex justify-content-center pt-2">
+								<ul class="nav">
+									<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">평점순</a></li>
+									<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">리뷰순 </a></li>
+									<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">관객수순</a></li>
+								</ul>
+							</div>
+							<div class="poster-box pl-5">
+								<div class="top-list  align-items-center justify-content-center">
+									<div class="frame d-flex flex-wrap">
+										
+										<c:forEach var="movie" items="${movieList }">
+										<div class="poster bg-secondary ml-4 mb-5">
+											<a href="/movie/detail/view?movieId=${movie.id }&val=1"><img src="${movie.imagePath }" class="w-100 h-100"> </a>
+										</div>
 		
-		<div class="d-flex">
-		
-		<c:import url="/WEB-INF/jsp/include/nav.jsp"/>
-
-			
-			<section class="contents">
-				<div class="movie-list bg-dark">
-					<div class="d-flex justify-content-center pt-2">
-						<ul class="nav">
-							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">평점순</a></li>
-							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">리뷰순 </a></li>
-							<li class="nav-items "><a href="#" class="nav-link text-white font-weight-bold text-center">관객수순</a></li>
-						</ul>
-					</div>
-					<div class="poster-box">
-						<div class="top-list  align-items-center justify-content-center">
-							<div class="frame d-flex flex-wrap">
-								
-								<c:forEach var="movie" items="${movieList }">
-								<div class="poster bg-secondary ml-4 mb-5">
-									<a href="/movie/detail/view?movieId=${movie.id }&val=1"><img src="${movie.imagePath }" class="w-100 h-100"> </a>
+										</c:forEach>
+									</div>
 								</div>
-
-								</c:forEach>
 							</div>
 						</div>
-					</div>
+						<div class="movie-review">
+							<h4 class="mt-3 ml-4 font-weight-bold">최근 등록된 평점</h4>
+							<hr class="mt-3 ml-4">
+							
+						</div>
+						<div>
+						</div>
+					</section>
 				</div>
-				<div class="movie-review">
-					<h4 class="mt-3 ml-4 font-weight-bold">최근 등록된 평점</h4>
-					<hr class="mt-3 ml-4">
-					
-				</div>
-			</section>
+			</div>
 		</div>
+							<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 		
 			
-		<div>
-			<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
-		</div>
 	</div>
 
 </body>

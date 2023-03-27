@@ -18,94 +18,86 @@
 <body>
 
 	<div id="wrap">
-		<c:import url="/WEB-INF/jsp/include/header.jsp"></c:import>
-		<div class="d-flex">
 			<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>
-			
-			<section class="ml-4">
+		<div class="d-flex">
+		<div>
+			<c:import url="/WEB-INF/jsp/include/header.jsp"></c:import>
 				
-					<h4>배우 및 배역 등록</h4>
-					<hr>
+				<section class="actorcastadd">
 					
-					<div class="">
-						<table class="table text-center">
-							<thead>
-								<tr>
-									<th>영화제목</th>
-									<th>배우명</th>
-									<th>배역이름</th>
-								</tr>
-								
-							</thead>
+						<h4>배우 및 배역 등록</h4>
+						<hr>
 						
-							<tbody>
-								<tr>
-									<td>
-										<select id="selectMovieId" class="movieList text-center form-control">
-											<option value="">-영화를 선택해주세요-</option>
-											<c:forEach var="movie" items="${movieList}">
-												<option  value="${movie.id }">${movie.movietitle }</option>
-											</c:forEach>
-										
-										</select>
-									</td>
-									<td>
-										<select class="actorlist text-center form-control">
-											<option value="">-배우를 선택해주세여요-</option>
-										</select>
-									</td>
-									
-									<td class="d-flex">
-										<input id ="characternameInput" class="form-control" type="text">
-										<button class="btn btn-dark" id="castaddBtn">등록</button>
-									</td>
-									
-									
-								</tr>
-								
-							</tbody>
-							
-						</table>						
-							
-						<div>
-						
-						<label>영화 선택</label>
-						<select onchange="if(this.value)location.href=(this.value);">
-							<option value="view?movieId=0">-영화를 선택해주세요</option>
-							<c:forEach var="movie" items="${movieList }">
-							<option value="view?movieId=${movie.id }">${movie.movietitle }</option>
-							</c:forEach>
-						</select>
+						<div class="">
 							<table class="table text-center">
 								<thead>
 									<tr>
+										<th>영화제목</th>
 										<th>배우명</th>
 										<th>배역이름</th>
 									</tr>
+									
 								</thead>
 							
-								<tbody>								
-										<c:forEach var="actor" items="${actorDetailList}">
-										<tr>
-											<td>${actor.actor}</td>
-											<td>${actor.charactername }</td>
-										</tr>
-										</c:forEach>
-
-									  
+								<tbody>
+									<tr>
+										<td>
+											<select id="selectMovieId" class="movieList text-center form-control">
+												<option value="">-영화를 선택해주세요-</option>
+												<c:forEach var="movie" items="${movieList}">
+													<option  value="${movie.id }">${movie.movietitle }</option>
+												</c:forEach>
+											
+											</select>
+										</td>
+										<td>
+											<select class="actorlist text-center form-control">
+												<option value="">-배우를 선택해주세여요-</option>
+											</select>
+										</td>
+										
+										<td class="d-flex">
+											<input id ="characternameInput" class="form-control" type="text">
+											<button class="btn btn-dark" id="castaddBtn">등록</button>
+										</td>
+										
+										
+									</tr>
+									
 								</tbody>
-							</table>
+								
+							</table>						
+								
+							<div>
 							
-							
-						</div>	
-						
-							
-					</div>
-					
-					
-					
-
-			</section>
+							<label>영화 선택</label>
+							<select onchange="if(this.value)location.href=(this.value);">
+								<option value="view?movieId=0">-영화를 선택해주세요</option>
+								<c:forEach var="movie" items="${movieList }">
+								<option value="view?movieId=${movie.id }">${movie.movietitle }</option>
+								</c:forEach>
+							</select>
+								<table class="table text-center">
+									<thead>
+										<tr>
+											<th>배우명</th>
+											<th>배역이름</th>
+										</tr>
+									</thead>
+								
+									<tbody>								
+											<c:forEach var="actor" items="${actorDetailList}">
+											<tr>
+												<td>${actor.actor}</td>
+												<td>${actor.charactername }</td>
+											</tr>
+											</c:forEach>
+									</tbody>
+								</table>
+							</div>	
+						</div>
+				</section>
+			</div>
 		</div>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"></c:import>

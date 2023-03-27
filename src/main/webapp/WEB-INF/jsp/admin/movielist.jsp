@@ -17,58 +17,59 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
-<body>
+<body class="backgroud">
 
 	<div id="wrap">
-		<c:import url="/WEB-INF/jsp/include/header.jsp"></c:import>
+		<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>
 		<div class="d-flex">
-			<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>
-			
-			<section class="movielist">
-				<div class="container">
-					<h4>영화 관리</h4>
-					<div>
-						<table class="table text-center">
-							<thead>
-								<tr>
-									<th>No.</th>
-									<th>영화명</th>
-									<th>관객수</th>
-									<th>배우</th>
-									<th>수정</th>
-									<th>삭제</th>
-								<tr>
-							</thead>
-							<tbody>
-								<c:forEach var="movie" items="${movieList }">
-								<tr>
-									<td>${movie.id }</td>
-									<td>${movie.movietitle }</td>
-									<td>
-										<input type="text" style="width:25%;" id="audienceInput">
-										<button class="ml-1 btn btn-secondary btn-sm audienceUpdateBtn" data-movie-id="${movie.id }">갱신</button>
-									</td>
-									<td class="d-flex">
-										<input type="text" style="width:50%;" id="actorInput${movie.id }">
-										<div class="ml-2 image-upload">
-				   						 	<label for="actorPicInput">
-				        						<div class="upload-icon" id="actorPicuploadBtn"><i class="bi bi-image"></i></div>
-				    						</label>
-				    						<input id="actorPicInput" type="file" style="display: none;"/>
-										</div>		
-										<button class="actoruploadBtn ml-2 btn btn-secondary btn-sm" data-movie-id="${movie.id }" >등록</button>
-									</td>
-									<td><button class="btn btn-secondary btn-sm">수정</button></td>
-									<td><button class="moviedeleteBtn btn btn-danger btn-sm" data-movie-id="${movie.id }">삭제</button></td>
-								</tr>
-								</c:forEach>
-							</tbody>
-						
-						</table>
-						
+			<div>
+			<c:import url="/WEB-INF/jsp/include/header.jsp"></c:import>
+				<section class="movielist bg-white">
+					<div class="container">
+						<h4>영화 관리</h4>
+						<div>
+							<table class="table text-center">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>영화명</th>
+										<th>관객수</th>
+										<th>배우</th>
+										<th>수정</th>
+										<th>삭제</th>
+									<tr>
+								</thead>
+								<tbody>
+									<c:forEach var="movie" items="${movieList }">
+									<tr>
+										<td>${movie.id }</td>
+										<td>${movie.movietitle }</td>
+										<td>
+											<input type="text" style="width:25%;" id="audienceInput">
+											<button class="ml-1 btn btn-secondary btn-sm audienceUpdateBtn" data-movie-id="${movie.id }">갱신</button>
+										</td>
+										<td class="d-flex">
+											<input type="text" style="width:50%;" id="actorInput${movie.id }">
+											<div class="ml-2 image-upload">
+					   						 	<label for="actorPicInput">
+					        						<div class="upload-icon" id="actorPicuploadBtn"><i class="bi bi-image"></i></div>
+					    						</label>
+					    						<input id="actorPicInput" type="file" style="display: none;"/>
+											</div>		
+											<button class="actoruploadBtn ml-2 btn btn-secondary btn-sm" data-movie-id="${movie.id }" >등록</button>
+										</td>
+										<td><button class="btn btn-secondary btn-sm">수정</button></td>
+										<td><button class="moviedeleteBtn btn btn-danger btn-sm" data-movie-id="${movie.id }">삭제</button></td>
+									</tr>
+									</c:forEach>
+								</tbody>
+							
+							</table>
+							
+						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</div>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"></c:import>
@@ -137,14 +138,22 @@
 				
 				let actor = $("#actorInput"+movieId).val();
 				if(actor == ""){
-					alert(actor);
+					alert("배우명을 입력해주세요");
 					return;
 				}
+				
+				var formData = new FormData();
+				formData.append("movieId", movieId);
+				formData.append("actor", actor);
+				formData.append("file", $("#actorPicInput")[0].files[0]);
 				
 				$.ajax({
 					type:"post"
 					, url:"/add/actor"
-					, data:{"movieId":movieId, "actor":actor}
+					, data:formData
+					, enctype:"multipart/form-data"
+					, processData:false
+					, contentType:false
 					, success:function(data){
 						if(data.result == "success"){
 							location.reload();

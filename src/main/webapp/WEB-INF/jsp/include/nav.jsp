@@ -3,6 +3,12 @@
 <div class="d-flex">
 	<nav class="main-menu bg-dark">
 		<ul class="nav flex-column mt-4">
+			<li>
+				<div class="logo bg-dark d-flex justify-content-center align-items-center">
+					<h1 class="display-5 text-white font-weight-bold">Movie</h1>
+				</div>
+				
+			</li>
 			<li class="nav-items bg-secondary"><a href="/movie/home/view" class="nav-link text-white font-weight-bold text-center">영화 홈</a></li>
 			<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">영화 랭킹</a></li>
 			<li class="nav-items bg-secondary"><a href="#" class="nav-link text-white font-weight-bold text-center">평점</a></li>
