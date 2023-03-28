@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.backgroud{
+.background{
 	background-color:#808080;
 	background-size: cover;
    	height: 100vh;
@@ -154,11 +154,14 @@ section > .movie-review{
 }
 
 .detail-menu{
-	width:900px;
-	border-style:solid;
-	border-width: 1.5px 0px 0.1px 0px;
-	margin-left: 90px;
-	
+	width:750px;
+	border-top-style:solid;
+	border-top-color:#dbdbdb;
+	border-top-width:thin;
+	margin-left: 130px;
+	border-bottom-style:solid;
+	border-bottom-width:thin;
+	border-bottom-color:#dbdbdb;
 }
 
 .movie-story{
@@ -205,8 +208,15 @@ section > .movie-review{
  } */
  
  .actorcastadd{
- 	margin-left:250px;
+ 	width:1000px;
+ 	padding-top:50px;
+ 	padding-left:50px;
+ 	padding-right:50px;
+ 	padding-bottom:100px;
+
+ 	margin-left:200px;
  }
+ 
  
  footer{
  		margin-left: 100.3px;

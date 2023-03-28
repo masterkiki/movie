@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
-<body class="backgroud">
+<body class="background">
 
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>

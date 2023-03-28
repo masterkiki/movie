@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
-<body>
+<body class="background">
 
 	<div id="wrap">
 			<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>
@@ -23,7 +23,7 @@
 		<div>
 			<c:import url="/WEB-INF/jsp/include/header.jsp"></c:import>
 				
-				<section class="actorcastadd">
+				<section class="actorcastadd bg-white">
 					
 						<h4>배우 및 배역 등록</h4>
 						<hr>

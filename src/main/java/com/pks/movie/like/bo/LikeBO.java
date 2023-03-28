@@ -13,9 +13,10 @@ public class LikeBO {
 	
 	public int addLike(
 			int userId
+			, int famouslineId
 			, int divisionId
 			, String type) {
-		return likeDAO.insertLike(userId, divisionId, type);
+		return likeDAO.insertLike(userId, famouslineId, divisionId, type);
 	}
 	
 }

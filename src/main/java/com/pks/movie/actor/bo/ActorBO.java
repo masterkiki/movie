@@ -15,6 +15,7 @@ import com.pks.movie.cast.model.Cast;
 import com.pks.movie.common.FileManagerService;
 import com.pks.movie.famousline.bo.FamouslineBO;
 import com.pks.movie.famousline.model.Famousline;
+import com.pks.movie.famousline.model.FamouslineDetail;
 
 @Service
 public class ActorBO {
@@ -47,6 +48,33 @@ public class ActorBO {
 		return actorDAO.selectActorList(movieId);
 	}
 
+	
+	public List<FamouslineDetail> getFamouslineDetailList(int movieId){
+		
+		List<Famousline> famouslineList = famouslineBO.selectFamousLine(movieId);
+		
+		List<FamouslineDetail> famouslineDetailList = new ArrayList<>();	
+		
+		for(Famousline famousline:famouslineList) {
+			FamouslineDetail famouslineDetail = new FamouslineDetail();
+			
+			famouslineDetail.setId(famousline.getId());
+			famouslineDetail.setUserId(famousline.getUserId());
+			famouslineDetail.setMovieId(famousline.getMoiveId());
+			famouslineDetail.setActorId(famousline.getActorId());
+			famouslineDetail.setCastinId(famousline.getCastingId());
+			famouslineDetail.setFamousline(famousline.getFamousline());
+			famouslineDetail.setExplain(famousline.getExplain());
+			
+			famouslineDetailList.add(famouslineDetail);
+		}
+		
+		return famouslineDetailList;
+	}
+	
+	
+	
+	
 	public List<ActorDetail> getActorDetailList(int movieId) {
 
 		List<Actor> actorList = actorDAO.selectActorList(movieId);
@@ -54,9 +82,8 @@ public class ActorBO {
 		List<ActorDetail> ActorDetailList = new ArrayList<>();
 
 		List<Cast> castList = castBO.getCharacterName(movieId);
-		
+	
 		List<Famousline> famouslineList = famouslineBO.selectFamousLine(movieId);
-
 		
 		for (int i = 0; i < actorList.size(); i++) {
 			ActorDetail actorDetail = new ActorDetail();
@@ -74,11 +101,11 @@ public class ActorBO {
 						if(castList.get(j).getId() == famouslineList.get(k).getCastingId()) {
 							actorDetail.setFamouslineId(famouslineList.get(k).getId());
 							actorDetail.setFamousline(famouslineList.get(k).getFamousline());
+							ActorDetailList.add(actorDetail);
 						}
 					}
 				}
 			}
-			ActorDetailList.add(actorDetail);
 			
 			
 		}

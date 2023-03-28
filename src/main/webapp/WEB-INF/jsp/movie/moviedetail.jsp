@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-<body class="backgroud">
+<body class="background">
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/nav.jsp"></c:import>
 		
@@ -146,7 +146,7 @@
 												<div class="d-flex align-items-center">
 													<span">${nickname }</span>
 												</div>
-												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-famousline-id="${actor.famouslineId }">추천</button>
+												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-divisionId-id="1" data-type-id="famousline" data-famousline-id="${actor.famouslineId }">추천</button>
 												<div class="d-flex align-items-center ml-2 text-danger">
 													<span>1129</span>
 												</div>

@@ -8,6 +8,7 @@ public interface LikeDAO {
 
 	public int insertLike(
 			@Param("userId") int userId
+			, @Param("famouslineId") int famouslineId
 			, @Param("divisionId") int divisionId
 			, @Param("type") String type);
 }

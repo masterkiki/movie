@@ -1,6 +1,9 @@
 package com.pks.movie.actor.model;
 
 import java.util.Date;
+import java.util.List;
+
+import com.pks.movie.cast.model.Cast;
 
 public class ActorDetail {
 	
@@ -13,6 +16,11 @@ public class ActorDetail {
 	private int famouslineId;
 	private String famousline;
 	private String imagePath;
+	
+	
+	
+	
+	
 	public String getImagePath() {
 		return imagePath;
 	}
