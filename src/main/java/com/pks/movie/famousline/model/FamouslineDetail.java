@@ -12,12 +12,33 @@ public class FamouslineDetail {
 	private String famousline;
 	private String explain;
 	private String charactername;
+	private String actor;
+	private String imagePath;
+	private String nickname;
 	private Date createdAt;
 	private Date updatedAt;
 	
 	
 	
 	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getActor() {
+		return actor;
+	}
+	public void setActor(String actor) {
+		this.actor = actor;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public String getCharactername() {
 		return charactername;
 	}

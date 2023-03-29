@@ -6,11 +6,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pks.movie.actor.bo.ActorBO;
+import com.pks.movie.actor.model.Actor;
 import com.pks.movie.cast.bo.CastBO;
 import com.pks.movie.cast.model.Cast;
 import com.pks.movie.famousline.dao.FamouslineDAO;
 import com.pks.movie.famousline.model.Famousline;
 import com.pks.movie.famousline.model.FamouslineDetail;
+import com.pks.movie.user.bo.UserBO;
+import com.pks.movie.user.model.User;
 
 @Service
 public class FamouslineBO {
@@ -21,6 +25,11 @@ public class FamouslineBO {
 	@Autowired
 	private CastBO castBO;
 	
+	@Autowired
+	private ActorBO actorBO;
+	
+	@Autowired
+	private UserBO userBO;
 
 	public int addFamousLine(
 			int userId
@@ -47,6 +56,12 @@ public class FamouslineBO {
 		for(Famousline famousline:famouslineList) {
 			FamouslineDetail famouslineDetail = new FamouslineDetail();
 			
+			Cast castList =  castBO.getCharacterName1(famousline.getCastingId());
+			
+			Actor actorList = actorBO.getActorByMovieId(castList.getActorId());
+			
+			User userList = userBO.selectUserById(famousline.getUserId());
+		
 			famouslineDetail.setId(famousline.getId());
 			famouslineDetail.setUserId(famousline.getUserId());
 			famouslineDetail.setMovieId(famousline.getMoiveId());
@@ -54,13 +69,14 @@ public class FamouslineBO {
 			famouslineDetail.setCastingId(famousline.getCastingId());
 			famouslineDetail.setFamousline(famousline.getFamousline());
 			famouslineDetail.setExplain(famousline.getExplain());
+			famouslineDetail.setCreatedAt(famousline.getCreatedAt());
 			
-			Cast castList =  castBO.getCharacterName1(movieId);
-		
-			if(famousline.getCastingId() == castList.getId()) {
-				famouslineDetail.setCharactername(castList.getCharactername());
 				
-			}
+			famouslineDetail.setCharactername(castList.getCharactername());
+			famouslineDetail.setActor(actorList.getActor());
+			famouslineDetail.setImagePath(actorList.getImagePath());
+			famouslineDetail.setNickname(userList.getNickname());
+			
 			famouslineDetailList.add(famouslineDetail);
 
 			

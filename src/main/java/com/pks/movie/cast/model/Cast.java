@@ -6,6 +6,7 @@ public class Cast {
 	private int actorId;
 	private int movieId;
 	private String charactername;
+	
 	public int getId() {
 		return id;
 	}

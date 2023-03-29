@@ -26,10 +26,11 @@
 			`id`
 			, `movieId`
 			, `actor`
+			, `imagePath`
 		FROM
 			`actor`
 		WHERE
-			`id` = #{movieId}
+			`id` = #{actorId}
 	
 	</select>
 	

@@ -44,9 +44,23 @@
 		FROM
 			`casting`
 		WHERE
-			`movieId` = #{movieId}
-		LIMIT 1
+			`id` = #{castingId}
 
+
+	</select>
+	
+	
+	<select id="selectCharacterNameByActorId" parameterType="map" resultType="com.pks.movie.cast.model.Cast">
+		SELECT
+			`id`
+			, `actorId`
+			, `movieId`
+			, `charactername`
+		FROM
+			`casting`
+		WHERE
+			`actorId` = #{actorId}
+	
 	</select>
 	
 </mapper>

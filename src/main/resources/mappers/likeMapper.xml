@@ -10,15 +10,15 @@
 			`like`
 		(
 			`userId`
+			, `famouslineId`
 			, `divisionId`
-			, `type`
 			, `createdAt`
 		)
 		VALUE
 		(
-			`userId` = #{userId}
-			, `divisionId` = #{divisionId}
-			, `type` = #{type}
+			#{userId}
+			, #{famouslineId}
+			, #{divisionId}
 			, now()
 		)
 	</insert>

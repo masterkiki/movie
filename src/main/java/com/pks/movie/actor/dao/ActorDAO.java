@@ -16,7 +16,7 @@ public interface ActorDAO {
 			, @Param("imagePath") String imagePath);
 	
 	
-	public Actor selectActorByMovieId(@Param("movieId") int movieId);
+	public Actor selectActorByMovieId(@Param("actorId") int actorId);
 	
 	
 	public List<Actor> selectActorList(@Param("movieId") int movieId);

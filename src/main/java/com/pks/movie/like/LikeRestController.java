@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,14 +24,13 @@ public class LikeRestController {
 	public Map<String, String> like(
 			@RequestParam("famouslineId") int famouslineId
 			, @RequestParam("divisionId") int divisionId
-			, @RequestParam("type") String type
 			, HttpSession session){
 		
 		Map<String, String> result = new HashMap<>();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = likeBO.addLike(userId, famouslineId, divisionId, type);
+		int count = likeBO.addLike(userId, famouslineId, divisionId);
 		
 		if(count == 1) {
 			result.put("result", "success");

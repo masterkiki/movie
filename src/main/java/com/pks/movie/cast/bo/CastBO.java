@@ -27,8 +27,12 @@ public class CastBO {
 		return castDAO.selectCastBymoiveId(moiveId);
 	}
 	
-	public Cast getCharacterName1(int moiveId) {
-		return castDAO.selectCastBymoiveId1(moiveId);
+	public Cast getCharacterName1(int castingId) {
+		return castDAO.selectCastBymoiveId1(castingId);
 	}
 	
+	public Cast getCharacterNameByActorId(int actorId) {
+		return castDAO.selectCharacterNameByActorId(actorId);
+		
+	}
 }

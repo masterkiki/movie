@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,30 +131,30 @@
 									<c:forEach var="moviedetail" items="${famouslineDetailList }">
 									<div class="actor-famousline d-flex">
 										<div class="d-flex left-box align-items-center">
-											<div class="actor-image-box bg-secondary"><img src="$<%-- {actor.imagePath } --%>" class="w-100 h-100"></div>
+											<div class="actor-image-box bg-secondary"><img src="${moviedetail.imagePath }" class="w-100 h-100"></div>
 											<div class="ml-3">
 												<div>
 													<b>${moviedetail.famousline }</b>
 												</div>
 												<div>
 													<span class="text-danger">${moviedetail.charactername }</span>
-													<span>｜<%-- ${actor.actor } --%> </span>
-													<span class="text-secondary fs-3">｜<small>${moviedetail.explain }</small></span>
+													<span class="small">｜${moviedetail.actor } </span>
+													<span class="text-secondary small">｜${moviedetail.explain }</span>
 												</div>
 											</div>
 										</div>
 										<div class="right-box">
 											<div class="d-flex justify-content-end">
 												<div class="d-flex align-items-center">
-													<span">${moviedetail.userId }</span>
+													<span">${moviedetail.nickname }</span>
 												</div>
-												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-divisionId-id="1" data-type-id="famousline" data-famousline-id="${moviedetail.id }">추천</button>
+												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-division-id="1" data-type-id="famousline" data-famousline-id="${moviedetail.id }">추천</button>
 												<div class="d-flex align-items-center ml-2 text-danger">
-													<span>1129</span>
+													<span>1</span>
 												</div>
 											</div>
 											<div class="text-right">
-												<span style="font-size:3px;">2023.04.32</span>
+												<span style="font-size:3px;"><fmt:formatDate value="${moviedetail.createdAt }" pattern="yyyy-MM-dd"/></span>
 											</div>
 										</div>
 									</div>
@@ -176,8 +177,25 @@
 		$(document).ready(function(){
 			
 			$(".likeBtn").on("click",function(){
-				alert("동작");
+				let divisionId = $(this).data("division-id");
+				let famouslineId = $(this).data("famousline-id");
 				
+				$.ajax({
+					data:"get"
+					, url:"/like"
+					, data:{"famouslineId":famouslineId , "divisionId" :divisionId}
+				 	, success:function(data){
+				 		if(data.result == "success"){
+				 			alert("좋아요 성공");
+				 		} else{
+				 			alert("좋아요 실패");
+				 		}
+				 	}
+				 	, error:function(){
+				 		alert("좋아요 에러");
+				 	}
+				});
+			
 			});
 			
 			

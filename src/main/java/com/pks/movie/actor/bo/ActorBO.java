@@ -13,9 +13,6 @@ import com.pks.movie.actor.model.ActorDetail;
 import com.pks.movie.cast.bo.CastBO;
 import com.pks.movie.cast.model.Cast;
 import com.pks.movie.common.FileManagerService;
-import com.pks.movie.famousline.bo.FamouslineBO;
-import com.pks.movie.famousline.model.Famousline;
-import com.pks.movie.famousline.model.FamouslineDetail;
 
 @Service
 public class ActorBO {
@@ -26,8 +23,6 @@ public class ActorBO {
 	@Autowired
 	private CastBO castBO;
 	
-	@Autowired
-	private FamouslineBO famouslineBO;
 
 	public int addActor(
 			int movieId
@@ -40,8 +35,8 @@ public class ActorBO {
 
 	}
 
-	public Actor getActorByMovieId(int movieId) {
-		return actorDAO.selectActorByMovieId(movieId);
+	public Actor getActorByMovieId(int actorId) {
+		return actorDAO.selectActorByMovieId(actorId);
 	}
 
 	public List<Actor> getActorList(int movieId) {
@@ -81,36 +76,32 @@ public class ActorBO {
 
 		List<ActorDetail> ActorDetailList = new ArrayList<>();
 
-		List<Cast> castList = castBO.getCharacterName(movieId);
 	
-		List<Famousline> famouslineList = famouslineBO.selectFamousLine(movieId);
+//		List<Famousline> famouslineList = famouslineBO.selectFamousLine(movieId);
 		
-		for (int i = 0; i < actorList.size(); i++) {
+		for (Actor actor:actorList) {
+			Cast castList = castBO.getCharacterNameByActorId(actor.getId());
 			ActorDetail actorDetail = new ActorDetail();
 			
-			actorDetail.setId(actorList.get(i).getId());
-			actorDetail.setMoiveId(actorList.get(i).getMovieId());
-			actorDetail.setActor(actorList.get(i).getActor());
-			actorDetail.setImagePath(actorList.get(i).getImagePath());
-			for(int j =0; j < castList.size(); j++) {
-				actorDetail.setActorId(castList.get(i).getActorId());
-				if(actorList.get(i).getId() == castList.get(j).getActorId()) {
-					actorDetail.setCastingId(castList.get(j).getId());
-					actorDetail.setCharactername(castList.get(j).getCharactername());
-//					for(int k = 0; k < famouslineList.size(); k++) {
-//						if(castList.get(j).getId() == famouslineList.get(k).getCastingId()) {
-//							actorDetail.setFamouslineId(famouslineList.get(k).getId());
-//							actorDetail.setFamousline(famouslineList.get(k).getFamousline());
-//						}
-//					}
-					ActorDetailList.add(actorDetail);
-				}
+			actorDetail.setId(actor.getId());
+			actorDetail.setMoiveId(actor.getMovieId());
+			actorDetail.setActor(actor.getActor());
+			actorDetail.setImagePath(actor.getImagePath());
+			actorDetail.setCharactername(castList.getCharactername());
+			actorDetail.setCastingId(castList.getId());
+			
+			ActorDetailList.add(actorDetail);
 			}
-			
-			
-		}
 
 		return ActorDetailList;
 	}
 
 }
+
+//			for(int j =0; j < castList.size(); j++) {
+//				actorDetail.setActorId(castList.get(i).getActorId());
+//				if(actorList.get(i).getId() == castList.get(j).getActorId()) {
+//					actorDetail.setCastingId(castList.get(j).getId());
+//					actorDetail.setCharactername(castList.get(j).getCharactername());
+//
+//				}
