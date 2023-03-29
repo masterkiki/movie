@@ -30,7 +30,7 @@
 		FROM
 			`casting`
 		WHERE
-			`movieId` = #{movieId}	
+			`movieId` = #{movieId}
 	
 	</select>
 	
@@ -45,6 +45,8 @@
 			`casting`
 		WHERE
 			`movieId` = #{movieId}
+		LIMIT 1
+
 	</select>
 	
 </mapper>

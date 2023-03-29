@@ -8,14 +8,22 @@ public class FamouslineDetail {
 	private int userId;
 	private int movieId;
 	private int actorId;
-	private int castinId;
+	private int castingId;
 	private String famousline;
 	private String explain;
+	private String charactername;
 	private Date createdAt;
 	private Date updatedAt;
 	
 	
 	
+	
+	public String getCharactername() {
+		return charactername;
+	}
+	public void setCharactername(String charactername) {
+		this.charactername = charactername;
+	}
 	public int getId() {
 		return id;
 	}
@@ -40,11 +48,11 @@ public class FamouslineDetail {
 	public void setActorId(int actorId) {
 		this.actorId = actorId;
 	}
-	public int getCastinId() {
-		return castinId;
+	public int getCastingId() {
+		return castingId;
 	}
-	public void setCastinId(int castinId) {
-		this.castinId = castinId;
+	public void setCastingId(int castinId) {
+		this.castingId = castinId;
 	}
 	public String getFamousline() {
 		return famousline;

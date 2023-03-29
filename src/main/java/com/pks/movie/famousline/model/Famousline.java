@@ -13,6 +13,8 @@ public class Famousline {
 	private String explain;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	
 	public String getFamousline() {
 		return famousline;
 	}

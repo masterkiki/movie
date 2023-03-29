@@ -127,26 +127,27 @@
 										</select>
 									</div>
 									<hr>
-									<c:forEach var="actor" items="${actorDetail }">
+									<c:forEach var="moviedetail" items="${famouslineDetailList }">
 									<div class="actor-famousline d-flex">
 										<div class="d-flex left-box align-items-center">
-											<div class="actor-image-box bg-secondary"><img src="${actor.imagePath }" class="w-100 h-100"></div>
+											<div class="actor-image-box bg-secondary"><img src="$<%-- {actor.imagePath } --%>" class="w-100 h-100"></div>
 											<div class="ml-3">
 												<div>
-													<b>${actor.famousline }</b>
+													<b>${moviedetail.famousline }</b>
 												</div>
 												<div>
-													<span class="text-danger">${actor.charactername }</span>
-													<span>｜${actor.actor } </span>
+													<span class="text-danger">${moviedetail.charactername }</span>
+													<span>｜<%-- ${actor.actor } --%> </span>
+													<span class="text-secondary fs-3">｜<small>${moviedetail.explain }</small></span>
 												</div>
 											</div>
 										</div>
 										<div class="right-box">
 											<div class="d-flex justify-content-end">
 												<div class="d-flex align-items-center">
-													<span">${nickname }</span>
+													<span">${moviedetail.userId }</span>
 												</div>
-												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-divisionId-id="1" data-type-id="famousline" data-famousline-id="${actor.famouslineId }">추천</button>
+												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-divisionId-id="1" data-type-id="famousline" data-famousline-id="${moviedetail.id }">추천</button>
 												<div class="d-flex align-items-center ml-2 text-danger">
 													<span>1129</span>
 												</div>

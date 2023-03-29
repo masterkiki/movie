@@ -49,28 +49,28 @@ public class ActorBO {
 	}
 
 	
-	public List<FamouslineDetail> getFamouslineDetailList(int movieId){
-		
-		List<Famousline> famouslineList = famouslineBO.selectFamousLine(movieId);
-		
-		List<FamouslineDetail> famouslineDetailList = new ArrayList<>();	
-		
-		for(Famousline famousline:famouslineList) {
-			FamouslineDetail famouslineDetail = new FamouslineDetail();
-			
-			famouslineDetail.setId(famousline.getId());
-			famouslineDetail.setUserId(famousline.getUserId());
-			famouslineDetail.setMovieId(famousline.getMoiveId());
-			famouslineDetail.setActorId(famousline.getActorId());
-			famouslineDetail.setCastinId(famousline.getCastingId());
-			famouslineDetail.setFamousline(famousline.getFamousline());
-			famouslineDetail.setExplain(famousline.getExplain());
-			
-			famouslineDetailList.add(famouslineDetail);
-		}
-		
-		return famouslineDetailList;
-	}
+//	public List<FamouslineDetail> getFamouslineDetailList(int movieId){
+//		
+//		List<Famousline> famouslineList = famouslineBO.selectFamousLine(movieId);
+//		
+//		List<FamouslineDetail> famouslineDetailList = new ArrayList<>();	
+//		
+//		for(Famousline famousline:famouslineList) {
+//			FamouslineDetail famouslineDetail = new FamouslineDetail();
+//			
+//			famouslineDetail.setId(famousline.getId());
+//			famouslineDetail.setUserId(famousline.getUserId());
+//			famouslineDetail.setMovieId(famousline.getMoiveId());
+//			famouslineDetail.setActorId(famousline.getActorId());
+//			famouslineDetail.setCastinId(famousline.getCastingId());
+//			famouslineDetail.setFamousline(famousline.getFamousline());
+//			famouslineDetail.setExplain(famousline.getExplain());
+//			
+//			famouslineDetailList.add(famouslineDetail);
+//		}
+//		
+//		return famouslineDetailList;
+//	}
 	
 	
 	
@@ -97,13 +97,13 @@ public class ActorBO {
 				if(actorList.get(i).getId() == castList.get(j).getActorId()) {
 					actorDetail.setCastingId(castList.get(j).getId());
 					actorDetail.setCharactername(castList.get(j).getCharactername());
-					for(int k = 0; k < famouslineList.size(); k++) {
-						if(castList.get(j).getId() == famouslineList.get(k).getCastingId()) {
-							actorDetail.setFamouslineId(famouslineList.get(k).getId());
-							actorDetail.setFamousline(famouslineList.get(k).getFamousline());
-							ActorDetailList.add(actorDetail);
-						}
-					}
+//					for(int k = 0; k < famouslineList.size(); k++) {
+//						if(castList.get(j).getId() == famouslineList.get(k).getCastingId()) {
+//							actorDetail.setFamouslineId(famouslineList.get(k).getId());
+//							actorDetail.setFamousline(famouslineList.get(k).getFamousline());
+//						}
+//					}
+					ActorDetailList.add(actorDetail);
 				}
 			}
 			

@@ -6,6 +6,8 @@ public class Actor {
 	private int movieId;
 	private String actor;
 	private String imagePath;
+	
+	
 	public String getImagePath() {
 		return imagePath;
 	}

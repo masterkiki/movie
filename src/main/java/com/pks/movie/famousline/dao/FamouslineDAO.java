@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.pks.movie.famousline.model.Famousline;
 
+
 @Repository
 public interface FamouslineDAO {
 

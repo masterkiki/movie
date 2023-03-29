@@ -80,7 +80,7 @@ public class MovieController {
 		List<ActorDetail> actorDetail = actorBO.getActorDetailList(movieId);
 		List<Famousline> famouslineList  = famouslineBO.selectFamousLine(movieId);
 		List<Cast> castList = castBO.getCharacterName(movieId);
-		List<FamouslineDetail> famouslineDetailList = actorBO.getFamouslineDetailList(movieId);
+		List<FamouslineDetail> famouslineDetailList = famouslineBO.getFamouslineDetailList(movieId);
 		
 		model.addAttribute("movie", movie);
 		model.addAttribute("actor", actor);
