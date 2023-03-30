@@ -15,12 +15,34 @@ public class FamouslineDetail {
 	private String actor;
 	private String imagePath;
 	private String nickname;
+	private String divisionId;
+	private int likeCount;
+	private boolean isLike;
 	private Date createdAt;
 	private Date updatedAt;
 	
 	
 	
 	
+	
+	public boolean isLike() {
+		return isLike;
+	}
+	public void setLike(boolean isLike) {
+		this.isLike = isLike;
+	}
+	public String getDivisionId() {
+		return divisionId;
+	}
+	public void setDivisionId(String divisionId) {
+		this.divisionId = divisionId;
+	}
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 	public String getNickname() {
 		return nickname;
 	}

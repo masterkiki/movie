@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pks.movie.like.dao.LikeDAO;
+import com.pks.movie.like.model.Like;
 
 @Service
 public class LikeBO {
@@ -13,9 +14,41 @@ public class LikeBO {
 	
 	public int addLike(
 			int userId
-			, int famouslineId
+			, int rowId
 			, int divisionId) {
-		return likeDAO.insertLike(userId, famouslineId, divisionId);
+		int count = likeDAO.selectLikeCountByUserId(userId, rowId);
+		
+		if(count == 0) {
+			return likeDAO.insertLike(userId, rowId, divisionId);
+		} else {
+			return likeDAO.deleteLike(userId, rowId, divisionId);
+		}
 	}
+	
+	
+	// 좋아요 개수 리턴하는 매소드
+	public int likeCount(int rowId/*, int divisionId*/) {
+		return likeDAO.likeCount(rowId /*, divisionId*/);
+	}
+	
+//	public Like selectLike(int rowId) {
+//		return likeDAO.selectLike(rowId);
+//	}
+	
+	public boolean isLike(int userId, int rowId) {
+		int count = likeDAO.selectLikeCountByUserId(userId, rowId);
+		
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	
+	public int deleteLike(int rowId, int userId, int divisionId) {
+		return likeDAO.deleteLike(userId, rowId, divisionId);
+	}
+	
 	
 }

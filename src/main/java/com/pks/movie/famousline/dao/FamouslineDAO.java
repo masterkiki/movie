@@ -21,6 +21,6 @@ public interface FamouslineDAO {
 	
 	public List<Famousline> selectFamousLine(@Param("movieId") int movieId);
 		
-	
+	public int countFamouslineByMovieId(@Param("movieId") int movieId);
 	
 }

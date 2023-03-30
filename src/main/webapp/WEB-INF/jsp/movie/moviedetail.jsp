@@ -56,7 +56,7 @@
 							</ul>
 						</div>
 						<c:if test="${param.val eq '1' }">
-						<div class="ml-3 mt-3 d-flex justify-content-center">
+						<div class="ml-3 mt-4 d-flex justify-content-center">
 							<div class="main-info">
 								<div class="d-flex">
 									<div class="movie-story">
@@ -68,8 +68,10 @@
 									</div>
 									</div>
 								</div>
-								<div class="famous-line mt-4">
+								
+								<div class="famous-line mt-5">
 									<div class="container mt-2">
+									<hr>
 										<div class="d-flex align-items-center">
 											<div class="d-flex align-items-center">
 												<h4><b>명대사</b></h4>
@@ -78,11 +80,41 @@
 												<button type="button" class="btn btn-white" onclick="location.href='/movie/detail/view?movieId=${movie.id }&val=4'">명대사 쓰기</button>
 											</div>
 										</div>
+											<c:forEach var="moviedetail" items="${famouslineDetailList }">
+													<div class="actor-famousline d-flex">
+														<div class="d-flex left-box align-items-center">
+															<div class="actor-image-box bg-secondary"><img src="${moviedetail.imagePath }" class="w-100 h-100"></div>
+															<div class="ml-3">
+																<div>
+																	<b>${moviedetail.famousline }</b>
+																</div>
+																<div>
+																	<span class="text-danger">${moviedetail.charactername }</span>
+																	<span class="small">｜${moviedetail.actor } </span>
+																	<span class="text-secondary small">｜${moviedetail.explain }</span>
+																</div>
+															</div>
+														</div>
+														<div class="right-box">
+															<div class="d-flex justify-content-end">
+																<div class="d-flex align-items-center">
+																	<span class="small">${moviedetail.nickname }</span>
+																</div>
+																<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-division-id="1" data-row-id="${moviedetail.id }">추천</button>
+																<div class="d-flex align-items-center ml-2 text-danger">
+																	<span>${moviedetail.likeCount }</span>
+																</div>
+															</div>
+														</div>
+													</div>
+											</c:forEach>
+									<hr>
 									</div>
 								</div>
 								
 								<div  class="movie-review">
-									<div class="container mt-4">
+									<div class="container mt-5">
+									<hr>
 										<h4><b>평점</b></h4>
 									</div>
 								</div>
@@ -146,11 +178,11 @@
 										<div class="right-box">
 											<div class="d-flex justify-content-end">
 												<div class="d-flex align-items-center">
-													<span">${moviedetail.nickname }</span>
+													<span class="small">${moviedetail.nickname }</span>
 												</div>
-												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-division-id="1" data-type-id="famousline" data-famousline-id="${moviedetail.id }">추천</button>
+												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-division-id="1" data-row-id="${moviedetail.id }">추천</button>
 												<div class="d-flex align-items-center ml-2 text-danger">
-													<span>1</span>
+													<span>${moviedetail.likeCount }</span>
 												</div>
 											</div>
 											<div class="text-right">
@@ -178,15 +210,15 @@
 			
 			$(".likeBtn").on("click",function(){
 				let divisionId = $(this).data("division-id");
-				let famouslineId = $(this).data("famousline-id");
+				let rowId = $(this).data("row-id");
 				
 				$.ajax({
 					data:"get"
-					, url:"/like"
-					, data:{"famouslineId":famouslineId , "divisionId" :divisionId}
+					, url:"/like/like"
+					, data:{"rowId":rowId , "divisionId":divisionId}
 				 	, success:function(data){
 				 		if(data.result == "success"){
-				 			alert("좋아요 성공");
+							location.reload();
 				 		} else{
 				 			alert("좋아요 실패");
 				 		}

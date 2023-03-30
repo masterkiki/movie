@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pks.movie.like.bo.LikeBO;
 
 @RestController
+@RequestMapping("/like")
 public class LikeRestController {
 
 	@Autowired
 	private LikeBO likeBO;
 	
 	
-	@PostMapping("/like")
+	@GetMapping("/like")
 	public Map<String, String> like(
-			@RequestParam("famouslineId") int famouslineId
+			@RequestParam("rowId") int rowId
 			, @RequestParam("divisionId") int divisionId
 			, HttpSession session){
 		
@@ -30,7 +31,7 @@ public class LikeRestController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = likeBO.addLike(userId, famouslineId, divisionId);
+		int count = likeBO.addLike(userId, rowId, divisionId);
 		
 		if(count == 1) {
 			result.put("result", "success");

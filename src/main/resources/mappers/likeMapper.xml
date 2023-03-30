@@ -10,17 +10,68 @@
 			`like`
 		(
 			`userId`
-			, `famouslineId`
+			, `rowId`
 			, `divisionId`
 			, `createdAt`
 		)
 		VALUE
 		(
 			#{userId}
-			, #{famouslineId}
+			, #{rowId}
 			, #{divisionId}
 			, now()
 		)
 	</insert>
+	
+	<select id="likeCount" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`like`
+		WHERE
+			`rowId` = #{rowId}
+			AND
+			<choose>
+				<when test="divisionId = 1">
+					`divisionId` = 1
+				</when>
+				<when test="divisionId =2">
+					`divisionId` = 2
+				</when>
+			</choose>
+	</select>
+	
+<!-- 	<select id="selectLike" parameterType="map" resultType="com.pks.movie.like.model.Like">
+		SELECT
+			`id`
+			, `userId`
+			, `rowId`
+			, `divisionId`
+			, `createdAt`
+		FROM
+			`like`
+		WHERE
+			`rowId` = #{rowId}
+	</select> -->
+	
+	<select id="selectLikeCountByUserId" parameterType="map" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`like`
+		WHERE
+			`userId` = #{userId}
+			AND `rowId` = #{rowId}
+	</select>
+	
+	
+	<delete id="deleteLike" parameterType="map">
+		DELETE FROM
+			`like`
+		WHERE
+			`userId` = #{userId}
+			AND `rowId` =#{rowId}
+			AND `divisionId` = #{divisionId}
+	</delete>
 
 </mapper>

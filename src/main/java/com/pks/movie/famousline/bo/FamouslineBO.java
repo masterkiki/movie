@@ -13,6 +13,8 @@ import com.pks.movie.cast.model.Cast;
 import com.pks.movie.famousline.dao.FamouslineDAO;
 import com.pks.movie.famousline.model.Famousline;
 import com.pks.movie.famousline.model.FamouslineDetail;
+import com.pks.movie.like.bo.LikeBO;
+import com.pks.movie.like.model.Like;
 import com.pks.movie.user.bo.UserBO;
 import com.pks.movie.user.model.User;
 
@@ -31,6 +33,10 @@ public class FamouslineBO {
 	@Autowired
 	private UserBO userBO;
 
+	@Autowired
+	private LikeBO likeBO;
+	
+	
 	public int addFamousLine(
 			int userId
 			, int movieId
@@ -61,6 +67,12 @@ public class FamouslineBO {
 			Actor actorList = actorBO.getActorByMovieId(castList.getActorId());
 			
 			User userList = userBO.selectUserById(famousline.getUserId());
+			
+//			Like likeList = likeBO.selectLike(famousline.getId());
+			
+			int like = likeBO.likeCount(famousline.getId());
+			
+			boolean isLike = likeBO.isLike(userList.getId(), like);
 		
 			famouslineDetail.setId(famousline.getId());
 			famouslineDetail.setUserId(famousline.getUserId());
@@ -76,6 +88,9 @@ public class FamouslineBO {
 			famouslineDetail.setActor(actorList.getActor());
 			famouslineDetail.setImagePath(actorList.getImagePath());
 			famouslineDetail.setNickname(userList.getNickname());
+			famouslineDetail.setLike(isLike);
+			famouslineDetail.setLikeCount(like);
+			
 			
 			famouslineDetailList.add(famouslineDetail);
 
@@ -83,6 +98,10 @@ public class FamouslineBO {
 		}
 		
 		return famouslineDetailList;
+	}
+	
+	public int countFamouslineByMovieId(int movieId) {
+		return famouslineDAO.countFamouslineByMovieId(movieId);
 	}
 	
 }

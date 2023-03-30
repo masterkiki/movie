@@ -52,4 +52,14 @@
 	</select>
 
 
+	<select id="countFamouslineByMovieId" parameterType="int" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`famousline`
+		WHERE
+			`movieId` = #{movieId}
+		
+	</select>
+
 </mapper>
