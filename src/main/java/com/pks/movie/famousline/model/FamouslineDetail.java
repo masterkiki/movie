@@ -17,7 +17,16 @@ public class FamouslineDetail {
 	private String nickname;
 	private String divisionId;
 	private int likeCount;
+	private int famouslineCount;
 	private boolean isLike;
+	
+	
+	public int getFamouslineCount() {
+		return famouslineCount;
+	}
+	public void setFamouslineCount(int famouslineCount) {
+		this.famouslineCount = famouslineCount;
+	}
 	private Date createdAt;
 	private Date updatedAt;
 	

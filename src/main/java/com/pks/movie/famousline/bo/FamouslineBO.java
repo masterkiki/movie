@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.pks.movie.actor.bo.ActorBO;
 import com.pks.movie.actor.model.Actor;
@@ -14,7 +15,6 @@ import com.pks.movie.famousline.dao.FamouslineDAO;
 import com.pks.movie.famousline.model.Famousline;
 import com.pks.movie.famousline.model.FamouslineDetail;
 import com.pks.movie.like.bo.LikeBO;
-import com.pks.movie.like.model.Like;
 import com.pks.movie.user.bo.UserBO;
 import com.pks.movie.user.model.User;
 
@@ -73,7 +73,8 @@ public class FamouslineBO {
 			int like = likeBO.likeCount(famousline.getId());
 			
 			boolean isLike = likeBO.isLike(userList.getId(), like);
-		
+			
+			int famouscount = famouslineDAO.countFamouslineByMovieId(movieId);
 			famouslineDetail.setId(famousline.getId());
 			famouslineDetail.setUserId(famousline.getUserId());
 			famouslineDetail.setMovieId(famousline.getMoiveId());

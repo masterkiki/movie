@@ -221,3 +221,19 @@ section > .movie-review{
  footer{
  		margin-left: 100.3px;
  }
+ 
+ .modal-body{
+ 	width:600px;
+ 	height:700px;
+ }
+ 
+ 
+ .modal-head{
+ 	height:40px;
+ }
+ 
+/*  .star{
+ 	font-size:40px;
+ } */
+
+

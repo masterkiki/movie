@@ -82,16 +82,21 @@ public class MovieController {
 		List<Cast> castList = castBO.getCharacterName(movieId);
 		List<FamouslineDetail> famouslineDetailList = famouslineBO.getFamouslineDetailList(movieId);
 		
+		int count = famouslineBO.countFamouslineByMovieId(movieId);
+		
 		model.addAttribute("movie", movie);
 		model.addAttribute("actor", actor);
 		model.addAttribute("actorDetail", actorDetail);
 		model.addAttribute("famouslineList", famouslineList);
-
+		
 		model.addAttribute("famouslineDetailList" , famouslineDetailList);
 		
 		List<Actor> actorList = actorBO.getActorList(movieId);
 		
 		model.addAttribute("actorList", actorList);
+//		model.addAttribute("ff", count);
+		// 굳이 이걸 안써도 jstl 통해서 리스트 사이즈를 알아올수있는 기능이있어 그것으로 처리함
+		// 만약 위의 ff로 사용하려면 count 자체가 값이므로 ${ff.(값)} 안하고 ${ff} 만써도 값이 나온다
 		
 		return "/movie/moviedetail";
 	}

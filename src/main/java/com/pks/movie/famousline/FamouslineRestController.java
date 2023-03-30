@@ -21,6 +21,22 @@ public class FamouslineRestController {
 	private FamouslineBO famouslineBO;
 	
 	
+	@PostMapping("/confirm/signin")
+	public Map<String, String> confirmsignin(HttpSession session){
+		
+		Map<String, String> loginconfirm = new HashMap<>();
+		
+		Integer userId = (Integer)session.getAttribute("userId");
+		
+		if(userId == null) {
+			loginconfirm.put("login", "fail");
+		} else {
+			loginconfirm.put("lgoin", "success");
+		}
+		return loginconfirm;
+	}
+	
+	
 	@PostMapping("/add")
 	public Map<String, String> addFamousLine(
 			@RequestParam("movieId") int movieId
@@ -37,8 +53,6 @@ public class FamouslineRestController {
 		// 2. 로그인 되있는상태면 인서트 정보
 		// ("login":"success" , "result":"success")
 		
-		
-		
 		if(userId == null) {
 			result.put("login", "fail");
 		} else {
@@ -50,14 +64,8 @@ public class FamouslineRestController {
 			} else {
 					result.put("result", "fail");
 			}
-			
 		}
-		
-
-		
-	
 		return result;
-	
 	}
 	
 }
