@@ -302,7 +302,14 @@
 	        		</b>
 	        	</div>
 	      <div class="modal-body">
-				
+	      
+	      	
+				<span class="star">
+				  ★★★★★
+				  <span>★★★★★</span>
+				  <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+				</span>
+	      
 	      </div>
 	    </div>
 	  </div>
