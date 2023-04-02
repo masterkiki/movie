@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.pks.movie.review.dao.ReviewDAO">
+	
+	<insert id="insertReview" parameterType="map">
+		INSERT INTO
+			`review`
+		(
+			 `userId`
+			, `movieId`
+			, `review`
+			, `point`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUE
+		(
+			#{userId}
+			, #{movieId}
+			, #{review}
+			, #{point}
+			, now()
+			, now()
+		)
+		
+	</insert>
+	
+	<select id="selectReview" parameterType="map" resultType="com.pks.movie.review.model.Review">
+		SELECT
+			`id`
+			, `userId`
+			, `movieId`
+			, `review`
+			, `point`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`review`
+		WHERE
+			`movieId` = #{movieId}
+			
+	</select>
+	
+	
+		<select id="selectPointByMovieId" parameterType="double" resultType="com.pks.movie.review.model.Review">
+		SELECT AVG(`point`)
+		FROM
+			`review`
+	</select>
+	
+	<select id="selectReviewById" parameterType="map" resultType="com.pks.movie.review.model.Review">
+				SELECT
+			`id`
+			, `userId`
+			, `movieId`
+			, `review`
+			, `point`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`review`
+		ORDER BY
+			`id` DESC; 
+	</select>
+	
+	
+</mapper>

@@ -16,7 +16,7 @@ public class LikeBO {
 			int userId
 			, int rowId
 			, int divisionId) {
-		int count = likeDAO.selectLikeCountByUserId(userId, rowId);
+		int count = likeDAO.selectLikeCountByUserId(userId, rowId, divisionId);
 		
 		if(count == 0) {
 			return likeDAO.insertLike(userId, rowId, divisionId);
@@ -27,16 +27,16 @@ public class LikeBO {
 	
 	
 	// 좋아요 개수 리턴하는 매소드
-	public int likeCount(int rowId/*, int divisionId*/) {
-		return likeDAO.likeCount(rowId /*, divisionId*/);
+	public int likeCount(int rowId , int divisionId) {
+		return likeDAO.likeCount(rowId, divisionId);
 	}
 	
 //	public Like selectLike(int rowId) {
 //		return likeDAO.selectLike(rowId);
 //	}
 	
-	public boolean isLike(int userId, int rowId) {
-		int count = likeDAO.selectLikeCountByUserId(userId, rowId);
+	public boolean isLike(int userId, int rowId, int divisionId) {
+		int count = likeDAO.selectLikeCountByUserId(userId, rowId, divisionId);
 		
 		if(count == 0) {
 			return false;
@@ -49,6 +49,8 @@ public class LikeBO {
 	public int deleteLike(int rowId, int userId, int divisionId) {
 		return likeDAO.deleteLike(userId, rowId, divisionId);
 	}
+	
+	
 	
 	
 }

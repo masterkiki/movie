@@ -20,7 +20,7 @@
 <body>
 		<div id=wrap class="justify-content-center">
 		<div class="d-flex justify-content-center">
-			<section class="d-flex justify-content-center align-items-center">
+			<section class="sign d-flex justify-content-center align-items-center">
 				<div class="signup-box">
 					<h1 class="text-center display-4 font-weight-bold">Movie</h1>
 					

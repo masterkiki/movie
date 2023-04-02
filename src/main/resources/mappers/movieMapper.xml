@@ -50,6 +50,25 @@
 	
 	</select>
 	
+	<select id="selectMovie1" parameterType="int" resultType="com.pks.movie.movie.model.Movie">
+		SELECT
+			`id`
+			, `movietitle`
+			, `genre`
+			, `country`
+			, `releasedate`
+			, `director`
+			, `imagePath`
+			, `story`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`movie`
+		WHERE
+			`id`= #{id}
+	
+	</select>
+	
 	<update id="updateAudience" parameterType="map">
 		UPDATE
 			`movie`
@@ -69,6 +88,7 @@
 			, `director`
 			, `imagePath`
 			, `story`
+			, `audience`
 			, `createdAt`
 			, `updatedAt`
 		FROM

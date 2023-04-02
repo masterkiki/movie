@@ -31,14 +31,8 @@
 		WHERE
 			`rowId` = #{rowId}
 			AND
-			<choose>
-				<when test="divisionId = 1">
-					`divisionId` = 1
-				</when>
-				<when test="divisionId =2">
-					`divisionId` = 2
-				</when>
-			</choose>
+			`divisionId` = #{divisionId}
+
 	</select>
 	
 <!-- 	<select id="selectLike" parameterType="map" resultType="com.pks.movie.like.model.Like">
@@ -62,6 +56,8 @@
 		WHERE
 			`userId` = #{userId}
 			AND `rowId` = #{rowId}
+			AND `divisionId` = #{divisionId}
+			
 	</select>
 	
 	
@@ -73,5 +69,7 @@
 			AND `rowId` =#{rowId}
 			AND `divisionId` = #{divisionId}
 	</delete>
+	
+
 
 </mapper>

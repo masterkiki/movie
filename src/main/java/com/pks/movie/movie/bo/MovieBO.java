@@ -52,6 +52,9 @@ public class MovieBO {
 		return movieDAO.deleteMovie(movieId);
 	}
 	
+	public Movie getMovieList1(int id) {
+		return movieDAO.selectMovie1(id);
+	}
 	
 	
 	

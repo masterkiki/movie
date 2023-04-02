@@ -3,9 +3,9 @@ package com.pks.movie.famousline.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.pks.movie.actor.bo.ActorBO;
 import com.pks.movie.actor.model.Actor;
@@ -35,6 +35,7 @@ public class FamouslineBO {
 
 	@Autowired
 	private LikeBO likeBO;
+	
 	
 	
 	public int addFamousLine(
@@ -69,10 +70,8 @@ public class FamouslineBO {
 			User userList = userBO.selectUserById(famousline.getUserId());
 			
 //			Like likeList = likeBO.selectLike(famousline.getId());
-			
-			int like = likeBO.likeCount(famousline.getId());
-			
-			boolean isLike = likeBO.isLike(userList.getId(), like);
+			int like = likeBO.likeCount(famousline.getId(), 1);
+			boolean isLike = likeBO.isLike(userList.getId(), famousline.getId(), 1);
 			
 			int famouscount = famouslineDAO.countFamouslineByMovieId(movieId);
 			famouslineDetail.setId(famousline.getId());

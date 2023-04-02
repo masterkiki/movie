@@ -33,17 +33,20 @@
 								<div class="movie-info-box d-flex justify-content-center">
 									<div class="d-flex w-50">
 										<div class="w-100">
-											<div class="display-4 font-weight-bold">${movie.movietitle }</div>
+											<div class="font-weight-bold" style="font-size:45px">${movie.movietitle }</div>
 											<hr>
-											<div>평점  ★★★★★ 10 </div> 
-											<div>내평점 ☆☆☆☆☆  작성하러가기></div>
+											
+											<div>평점   </div> 
 											<hr>
-											<div><b class="mr-2">장르</b>${movie.genre }</div>
-											<div><b class="mr-2">국가</b>${movie.country }</div>
-											<div> 120분 | ${movie.releasedate } | ${movie.audience}명</div>
-											<div><b class="mr-2">감독</b>${movie.director }</div>
-											<div><b class="mr-2">출연</b>
-											<c:forEach var="actorname" items="${actorList}">
+											<div><b class="mr-4">개봉일</b><span class="ml-4">${movie.releasedate }</span></div>
+											<div><b class="mr-5">장르</b><span class="ml-3">${movie.genre }</span></div>
+											<div><b class="mr-5">국가</b><span class="ml-3">${movie.country }</span> </div>
+											<div><b class="mr-4">러닝타임</b></b><span class="ml-1"> 120분</span></div>
+											<div><b class="mr-2">누적 관객수</b> <fmt:formatNumber value="${movie.audience }" pattern="#,###" />명</div>
+											<div><b class="mr-5">감독</b><span class="ml-3">${movie.director }</span></div>
+											<div><b class="mr-4">출연</b>
+											<span class="ml-4"></span>
+											<c:forEach var="actorname" items="${actorList}" begin="0" end="5" step="1" varStatus="status">
 												<span class="small"><a href="${actorname.imagePath }">${actorname.actor}</a></span>
 											</c:forEach>
 											</div>
@@ -59,7 +62,7 @@
 							<ul class="nav ml-3 bg-dark id="menu">
 								<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=1" name="submenu" class="nav-link text-white" id="1">주요정보</a></li>
 								<li class="nav-items"><a href="#" name="submenu" class="nav-link text-white" id="2">배우/제작진</a></li>
-								<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=3" name="submenu" class="nav-link text-white" id="3">평점</a></li>
+								<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=3" name="submenu" class="nav-link text-white" id="3">평점/한줄평</a></li>
 								<li class="nav-items"><a href="/movie/detail/view?movieId=${movie.id }&val=4" name="submenu" class="nav-link text-white" id="4">명대사</a></li>
 							</ul>
 						</div>
@@ -80,12 +83,12 @@
 								<div class="famous-line mt-5">
 									<div class="container mt-2">
 									<hr>
-										<div class="d-flex align-items-center">
+										<div class="d-flex align-items-center justify-content-between">
 											<div class="d-flex align-items-center">
 												<h4><b>명대사</b></h4>
 											</div>
 											<div class="ml-3">
-												<button type="button" class="btn btn-white" onclick="location.href='/movie/detail/view?movieId=${movie.id }&val=4'">명대사 쓰기</button>
+												<button type="button" class="btn btn-white" onclick="location.href='/movie/detail/view?movieId=${movie.id }&val=4'">명대사 더보기</button>
 											</div>
 										</div>
 											<c:forEach var="moviedetail" items="${famouslineDetailList }" begin="0" end="2" step="1" varStatus="status">
@@ -104,17 +107,6 @@
 																</div>
 															</div>
 														</div>
-														<div class="right-box">
-															<div class="d-flex justify-content-end">
-																<div class="d-flex align-items-center">
-																	<span class="small">${moviedetail.nickname }</span>
-																</div>
-																<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-division-id="1" data-row-id="${moviedetail.id }">추천</button>
-																<div class="d-flex align-items-center ml-2 text-danger">
-																	<span>${moviedetail.likeCount }</span>
-																</div>
-															</div>
-														</div>
 													</div>
 											</c:forEach>
 									<hr>
@@ -124,7 +116,46 @@
 								<div  class="movie-review">
 									<div class="container mt-5">
 									<hr>
+										<div class="d-flex justify-content-between">
 										<h4><b>평점</b></h4>
+										<div class="ml-3">
+											<button type="button" class="btn btn-white" onclick="location.href='/movie/detail/view?movieId=${movie.id }&val=3'">평점/한줄평 더보기</button>
+										</div>
+										</div>
+											<c:forEach var="reviewDetail" items="${reviewDetailList }">
+												<div class="actor-famousline d-flex">
+													<div class=" left-box align-items-center"> 
+														<div>
+															<div>
+																<c:choose> 
+																    <c:when test="${reviewDetail.point eq 5}">
+																			<span class="text-danger">★★★★★</span><span class="text-secondary"></span>
+																    </c:when>
+																    <c:when test="${reviewDetail.point eq 4}">
+																			<span class="text-danger">★★★★</span><span class="text-secondary">★</span>
+																    </c:when>
+																    <c:when test="${reviewDetail.point eq 3}">
+																			<span class="text-danger">★★★</span><span class="text-secondary">★★</span>
+																    </c:when>
+																    <c:when test="${reviewDetail.point eq 2}">
+																			<span class="text-danger">★★</span><span class="text-secondary">★★★</span>
+																    </c:when>
+																    <c:otherwise>
+																        <span class="text-danger">★</span><span class="text-secondary">★★★★</span>
+																    </c:otherwise> 
+																</c:choose>
+															</div>
+															<div>
+																<span>${reviewDetail.review }</span>
+															</div>
+															<div>
+																<span class="text-primary"><b>${reviewDetail.nickname }</b></span>
+																<span style="font-size:13px;" class="text-secondary ml-2"><fmt:formatDate value="${reviewDetail.createdAt }" pattern="yyyy. MM. dd HH:mm "/></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
 									</div>
 								</div>
 							</div>
@@ -139,7 +170,7 @@
 						
 						<div class="famousline-page pt-4">
 							<div class="d-flex justify-content-center">
-								<div>
+								<div class="movie-review">
 									<div>
 										<h4><b>평점</b></h4>
 									</div>
@@ -147,37 +178,56 @@
 									<br><br>
 									
 									<div class="d-flex justify-content-between">
-										<span>관람객 평점 <b>${fn:length(famouslineList) }</b>건</span>
-										<button type="button" class="review-btn btn btn-sm btn-dark" data-toggle="modal" data-target="#moreMenuModal" data-review-id="${movie.id }">내 평점 등록</button>
+										<span>관람객 평점 <b>${fn:length(reviewDetailList) }</b>건</span>
+										<%-- <button type="button" class="review-btn btn btn-sm btn-dark" data-toggle="modal" data-target="#moreMenuModal" data-review-id="${movie.id }">평점 등록</button> --%>
+										<button type="button" class="review-btn btn btn-sm btn-dark" data-review-id="${movie.id }">평점 등록</button>
 									</div>
 									<hr>
-									<c:forEach var="moviedetail" items="${famouslineDetailList }">
+									<c:forEach var="reviewDetail" items="${reviewDetailList }">
 									<div class="actor-famousline d-flex">
-										<div class="d-flex left-box align-items-center">
-											<div class="actor-image-box bg-secondary"><img src="${moviedetail.imagePath }" class="w-100 h-100"></div>
-											<div class="ml-3">
+										<div class=" left-box align-items-center">
+											<div>
 												<div>
-													<b>${moviedetail.famousline }</b>
+													<c:choose> 
+													    <c:when test="${reviewDetail.point eq 5}">
+																<span class="text-danger">★★★★★</span><span class="text-secondary"></span>
+													    </c:when>
+													    <c:when test="${reviewDetail.point eq 4}">
+																<span class="text-danger">★★★★</span><span class="text-secondary">★</span>
+													    </c:when>
+													    <c:when test="${reviewDetail.point eq 3}">
+																<span class="text-danger">★★★</span><span class="text-secondary">★★</span>
+													    </c:when>
+													    <c:when test="${reviewDetail.point eq 2}">
+																<span class="text-danger">★★</span><span class="text-secondary">★★★</span>
+													    </c:when>
+													    <c:otherwise>
+													        <span class="text-danger">★</span><span class="text-secondary">★★★★</span>
+													    </c:otherwise> 
+													</c:choose>
 												</div>
 												<div>
-													<span class="text-danger">${moviedetail.charactername }</span>
-													<span class="small">｜${moviedetail.actor } </span>
-													<span class="text-secondary small">｜${moviedetail.explain }</span>
+													<span>${reviewDetail.review }</span>
+												</div>
+												<div>
+													<span class="text-primary"><b>${reviewDetail.nickname }</b></span>
+													<span style="font-size:13px;" class="text-secondary ml-2"><fmt:formatDate value="${reviewDetail.createdAt }" pattern="yyyy. MM. dd HH:mm "/></span>
 												</div>
 											</div>
 										</div>
 										<div class="right-box">
 											<div class="d-flex justify-content-end">
-												<div class="d-flex align-items-center">
-													<span class="small">${moviedetail.nickname }</span>
-												</div>
-												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-division-id="1" data-row-id="${moviedetail.id }">추천</button>
-												<div class="d-flex align-items-center ml-2 text-danger">
-													<span>${moviedetail.likeCount }</span>
+												<div class="d-flex align-items-center ml-2">
+												<c:if test="${userId eq reviewDetail.userId }">
+													<i class="bi bi-three-dots"></i>
+												</c:if>
 												</div>
 											</div>
-											<div class="text-right">
-												<span style="font-size:3px;"><fmt:formatDate value="${moviedetail.createdAt }" pattern="yyyy-MM-dd"/></span>
+											<div class="d-flex justify-content-end mt-3">
+												<button type="button" class="likeBtn btn btn-link text-dark ml-2" data-division-id="2" data-row-id="${reviewDetail.id }"><i class="bi bi-hand-thumbs-up"></i></button>
+												<div class="d-flex align-items-center ml-2 text-danger">
+													<span>${reviewDetail.likeCount }</span>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -261,18 +311,27 @@
 												</div>
 											</div>
 										</div>
-										<div class="right-box">
-											<div class="d-flex justify-content-end">
-												<div class="d-flex align-items-center">
-													<span class="small">${moviedetail.nickname }</span>
-												</div>
-												<button type="button" class="likeBtn btn btn-sm btn-secondary ml-2" data-division-id="1" data-row-id="${moviedetail.id }">추천</button>
-												<div class="d-flex align-items-center ml-2 text-danger">
-													<span>${moviedetail.likeCount }</span>
-												</div>
+										<div class="d-flex right-box justify-content-end align-items-center">
+											<div>
+												<span class="small text-primary"><b>${moviedetail.nickname }</b></span>
 											</div>
-											<div class="text-right">
-												<span style="font-size:3px;"><fmt:formatDate value="${moviedetail.createdAt }" pattern="yyyy-MM-dd"/></span>
+											<div>
+												<div class="d-flex">
+<%-- 													<c:choose>
+														<c:when test="${moviedetail.like }">
+															<button type="button" class="likeCancelBtn btn btn-link text-primary ml-2" data-division-id="1" data-row-id="${moviedetail.id }"><i class="bi bi-hand-thumbs-up-fill"></i></button>
+														</c:when>
+														<c:otherwise> --%>
+															<button type="button" class="likeBtn btn btn-link text-dark ml-2" data-division-id="1" data-row-id="${moviedetail.id }"><i class="bi bi-hand-thumbs-up"></i></button>
+<%-- 														</c:otherwise>
+													</c:choose> --%>
+													<div class="d-flex align-items-center ml-2 text-danger">
+														<span>${moviedetail.likeCount }</span>
+													</div>
+												</div>
+												<div class="text-right">
+													<span style="font-size:3px;"><fmt:formatDate value="${moviedetail.createdAt }" pattern="yyyy-MM-dd"/></span>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -303,12 +362,28 @@
 	        	</div>
 	      <div class="modal-body">
 	      
-	      	
-				<span class="star">
-				  ★★★★★
-				  <span>★★★★★</span>
-				  <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
-				</span>
+			<div class="star-rating space-x-2 mx-auto">
+				<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+				<label for="5-stars" class="star pr-4">★</label>
+				<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+				<label for="4-stars" class="star">★</label>
+				<input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+				<label for="3-stars" class="star">★</label>
+				<input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+				<label for="2-stars" class="star">★</label>
+				<input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+				<label for="1-star" class="star">★</label>
+			</div>
+			<div class="reviewInput mx-auto">
+			<div class="d-flex justify-content-center">
+				<label>한줄평을 입력해주세요</label>
+			</div>
+				<textarea class="form-control" id="reviewInput"></textarea>
+			</div>
+			
+			<div class="reviewBtn d-flex justify-content-center">
+				<button type="button" class="btn btn-dark w-50" id="reviewAddBtn">등록</button>
+			</div>
 	      
 	      </div>
 	    </div>
@@ -332,9 +407,89 @@
 	
 		$(document).ready(function(){
 			
-			$(document).on("click", function(){
-				let reviewId = $(this).data("review-id");
+			
+			$("#reviewAddBtn").on("click" ,function(){
+				let movieId = $(".review-btn").data("review-id");
+				let point = $("input[name='rating']:checked").val();
+				let review = $("#reviewInput").val();	
+				
+				
+				
+				if(point == undefined){
+					alert("별점을 입력해주세요");
+					return;
+				}
+				
+				if(review == ""){
+					alert("한줄평을 입력해주세요");
+					return;
+				} 
+				
+				$.ajax({
+					data:"get"
+					, url:"/review/add"
+					, data:{"movieId":movieId, "point":point, "review":review}
+					, success:function(data){
+						if(data.result == "success"){
+							location.reload();
+						} else{
+							alert("평점 등록 실패");
+						}
+					}
+					, error:function(){
+						alert("평점 등록 에러");
+					}
+				});
+				
+				
 			});
+			
+			
+			$(".review-btn").on("click",function(){
+				
+	
+	
+				$.ajax({
+					type:"post"
+					, url:"/user/confirm/signin"
+					, data:{}
+					, success:function(data){
+						if(data.login == "fail"){
+							work();
+						} else{
+							  $("#moreMenuModal").modal("show");
+						}
+					}
+					, error:function(){
+						alert("에러");
+					}
+				});
+				
+				
+			}); 
+			
+			$(".likeCancelBtn").on("click",function(){
+				let divisionId = $(this).data("division-id");
+				let rowId = $(this).data("row-id");
+				
+				$.ajax({
+					data:"get"
+					, url:"/like/like"
+					, data:{"rowId":rowId , "divisionId":divisionId}
+				 	, success:function(data){
+				 		if(data.result == "success"){
+							location.reload();
+				 		} else{
+				 			alert("좋아요 실패");
+				 		}
+				 	}
+				 	, error:function(){
+				 		work();
+				 	}
+				});
+			
+			});
+			
 			
 			
 			$(".likeBtn").on("click",function(){
@@ -389,7 +544,7 @@
 				
 				$.ajax({
 					type:"post"
-					, url:"/famousline/confirm/signin"
+					, url:"/user/confirm/signin"
 					, data:{}
 					, success:function(data){
 						if(data.login == "fail"){

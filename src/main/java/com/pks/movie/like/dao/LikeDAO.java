@@ -15,18 +15,21 @@ public interface LikeDAO {
 	
 	public int likeCount(
 			@Param("rowId") int rowId
-			/*, @ Param("divisionId") int divisionId*/);
+			, @Param("divisionId") int divisionId);
 	
 	public Like selectLike(@Param("rowId") int rowId);
 	
 	public int selectLikeCountByUserId(
 			@Param("userId") int userId
-			, @Param("rowId") int rowId);
+			, @Param("rowId") int rowId
+			, @Param("divisionId") int divisionId);
 
 	
 	public int deleteLike(
 			@Param("userId") int userId
 			, @Param("rowId") int rowId
 			, @Param("divisionId") int divisionId);	
+	
+	
 }
 

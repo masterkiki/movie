@@ -15,6 +15,7 @@ public class Movie {
 	private int audience;
 	private Date createdAt;
 	private Date updatedAt;
+	
 	public int getId() {
 		return id;
 	}

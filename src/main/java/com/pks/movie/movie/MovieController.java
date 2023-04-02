@@ -2,6 +2,8 @@ package com.pks.movie.movie;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,9 @@ import com.pks.movie.famousline.model.FamouslineDetail;
 import com.pks.movie.movie.bo.MovieBO;
 import com.pks.movie.movie.model.Movie;
 import com.pks.movie.movie.model.MovieDetail;
+import com.pks.movie.review.bo.ReviewBO;
+import com.pks.movie.review.model.ReviewDetail;
+import com.pks.movie.review.model.ReviewHome;
 import com.pks.movie.user.bo.UserBO;
 
 @Controller
@@ -41,13 +46,17 @@ public class MovieController {
 	@Autowired
 	private CastBO castBO;
 	
+	@Autowired
+	private ReviewBO reviewBO;
 	
 	@GetMapping("/home/view")
 	public String moivehomeview(Model model) {
 		
+		List<ReviewHome> reviewHomeList = reviewBO.getReviewDetailById();
 		List<Movie> movieList = movieBO.getMovieList();
 		
 		model.addAttribute("movieList" ,movieList);
+		model.addAttribute("reviewHomeList" ,reviewHomeList);
 		return "/movie/moviehome";
 	}
 	
@@ -73,7 +82,8 @@ public class MovieController {
 	public String movieInfoView(
 			@RequestParam("movieId") int movieId
 			, @RequestParam("val") int val
-			, Model model) {
+			, Model model
+			, HttpSession session) {
 		
 		MovieDetail movie = movieBO.getMoiveById(movieId);
 		Actor actor = actorBO.getActorByMovieId(movieId);
@@ -81,6 +91,7 @@ public class MovieController {
 		List<Famousline> famouslineList  = famouslineBO.selectFamousLine(movieId);
 		List<Cast> castList = castBO.getCharacterName(movieId);
 		List<FamouslineDetail> famouslineDetailList = famouslineBO.getFamouslineDetailList(movieId);
+		List<ReviewDetail> reviewDetailList = reviewBO.getReviewDetailList(movieId);
 		
 		int count = famouslineBO.countFamouslineByMovieId(movieId);
 		
@@ -88,8 +99,9 @@ public class MovieController {
 		model.addAttribute("actor", actor);
 		model.addAttribute("actorDetail", actorDetail);
 		model.addAttribute("famouslineList", famouslineList);
-		
 		model.addAttribute("famouslineDetailList" , famouslineDetailList);
+		model.addAttribute("reviewDetailList" ,reviewDetailList);
+		
 		
 		List<Actor> actorList = actorBO.getActorList(movieId);
 		

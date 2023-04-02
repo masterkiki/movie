@@ -82,4 +82,20 @@ public class UserRestController {
 		return result;
 	}
 	
+	
+	
+	@PostMapping("/confirm/signin")
+	public Map<String, String> confirmsignin(HttpSession session){
+		
+		Map<String, String> loginconfirm = new HashMap<>();
+		
+		Integer userId = (Integer)session.getAttribute("userId");
+		
+		if(userId == null) {
+			loginconfirm.put("login", "fail");
+		} else {
+			loginconfirm.put("lgoin", "success");
+		}
+		return loginconfirm;
+	}
 }
