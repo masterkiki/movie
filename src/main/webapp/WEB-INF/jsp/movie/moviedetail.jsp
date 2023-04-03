@@ -36,29 +36,40 @@
 											<div class="font-weight-bold" style="font-size:45px">${movie.movietitle }</div>
 											<hr>
 											
-											<div>평점 ${averagepoint }
-											
+											<div class="d-flex align-items-center"><b style="font-size:20px;" class="mr-5">평점</b>
 												<c:choose> 
-												
 												    <c:when test="${averagepoint eq 5 }">
+												    	<div  style="font-size:20px;"  class="ml-4">
 															<span class="text-danger">★★★★★</span><span class="text-secondary"></span>
+												    	</div>
 												    </c:when>
 												     <c:when test="${averagepoint >= 4 }">
-															<span class="text-danger">★★★★</span><span class="text-secondary">★</span>
+														<div  style="font-size:25px;"  class="ml-4">
+															<span  class="text-danger">★★★★</span><span class="text-secondary">★</span>
+														</div>
 												    </c:when>
 												     <c:when test="${averagepoint >= 3 }">
-															<span class="text-danger">★★★</span><span class="text-secondary">★★</span>
+													     <div>
+																<span class="text-danger">★★★</span><span class="text-secondary">★★</span>
+													     </div>
 												    </c:when>
 												    <c:when test="${averagepoint >= 2 }">
+														<div>
 															<span class="text-danger">★★</span><span class="text-secondary">★★★</span>
+														</div>
 												    </c:when>
 												    <c:when test="${averagepoint >= 1 }">
+												    	<div>
 															<span class="text-danger">★</span><span class="text-secondary">★★★★</span>
+												    	</div>
 												    </c:when>
 												    <c:otherwise>
-												        <span class="text-danger"></span><span class="text-secondary">★★★★★</span>
+												    	<div>
+													        <span class="text-danger"></span><span class="text-secondary">★★★★★</span>
+												    	</div>
 												    </c:otherwise> 
 												</c:choose>
+												<span class="ml-3">${averagepoint }</span>
 										   </div> 
 											<hr>
 											<div><b class="mr-4">개봉일</b><span class="ml-4">${movie.releasedate }</span></div>

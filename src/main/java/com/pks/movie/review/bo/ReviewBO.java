@@ -77,8 +77,20 @@ public class ReviewBO {
 	}
 	
 	
-	public double averagePoint(int movieId) {
-		return reviewDAO.selectPointByMovieId(movieId);
+	public Double averagePoint(int movieId) {
+		
+//		return reviewDAO.selectPointByMovieId(movieId);
+		/*
+		 * Double average = reviewDAO.selectPointByMovieId(movieId); 
+		 * return average !=null? average.doubleValue() : 0.0;
+		 *    널이 아닐때 는 앞에 average.doubleValue()  선택  널일때 뒤 0.0 선택
+		 */
+		 Double average = reviewDAO.selectPointByMovieId(movieId); 
+		 if(average == null) {
+			 return 0.0;
+		 } else {
+			 return average;
+		 }
 	}
 	
 	

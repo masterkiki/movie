@@ -192,7 +192,9 @@ section > .movie-list{
 
 .movie-review{
 	width:800px;
-	height:400px;
+	padding-top:50px;
+	padding-bottom:100px;
+	
 }
 
 .actor-image-box{

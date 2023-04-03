@@ -104,7 +104,7 @@ public class MovieController {
 		model.addAttribute("famouslineDetailList" , famouslineDetailList);
 		model.addAttribute("reviewDetailList" ,reviewDetailList);
 		
-		double averagepoint = reviewBO.averagePoint(movieId);
+		Double averagepoint = reviewBO.averagePoint(movieId);
 		
 		
 		List<Actor> actorList = actorBO.getActorList(movieId);
