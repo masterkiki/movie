@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -46,44 +47,51 @@
 								</div>
 							</div>
 						</div>
-						<div class="movie-review">
-							<h4 class="mt-3 ml-4 font-weight-bold">최근 등록된 평점</h4>
-							<hr class="mt-3 ml-4">
-							<c:forEach var="reviewhome" items="${reviewHomeList }">
-									<div class="actor-famousline d-flex">
-										<div class=" left-box align-items-center"> 
-											<div>
-											<div class="actor-image-box bg-secondary"><img src="${reviewhome.imagePath }" class="w-100 h-100"></div>
-												<div>
-													<c:choose> 
-													    <c:when test="${reviewhome.point eq 5}">
-																<span class="text-danger">★★★★★</span><span class="text-secondary"></span>
-													    </c:when>
-													    <c:when test="${reviewhome.point eq 4}">
-																<span class="text-danger">★★★★</span><span class="text-secondary">★</span>
-													    </c:when>
-													    <c:when test="${reviewhome.point eq 3}">
-																<span class="text-danger">★★★</span><span class="text-secondary">★★</span>
-													    </c:when>
-													    <c:when test="${reviewhome.point eq 2}">
-																<span class="text-danger">★★</span><span class="text-secondary">★★★</span>
-													    </c:when>
-													    <c:otherwise>
-													        <span class="text-danger">★</span><span class="text-secondary">★★★★</span>
-													    </c:otherwise> 
-													</c:choose>
-												</div>
-												<div>
-													<span>${reviewhome.review }</span>
-												</div>
-												<div>
-													<span class="text-primary"><b>${reviewDetail.nickname }</b></span>
-													<span style="font-size:13px;" class="text-secondary ml-2"><fmt:formatDate value="${reviewDetail.createdAt }" pattern="yyyy. MM. dd HH:mm "/></span>
+						<div class="d-flex justify-content-center">
+							<div class="movie-review">
+								<h4 class="mt-3 ml-4 font-weight-bold">최근 등록된 평점</h4>
+								<hr class="mt-3">
+								<c:forEach var="reviewhome" items="${reviewHomeList }">
+										<div class="actor-famousline1 d-flex mt-2">
+											<div class=" left-box align-items-center"> 
+												<div class="d-flex">
+													<div class="movie-image-box"><img src="${reviewhome.imagePath }" class="w-100 h-100"></div>
+													<div class="ml-3">
+														<div>
+															<span style="font-size:20px;" class="text-info"><b>${reviewhome.movietitle }</b></span>
+														</div>
+														<div>
+															<c:choose> 
+															    <c:when test="${reviewhome.point eq 5}">
+																		<span class="text-danger">★★★★★</span><span class="text-secondary"></span>
+															    </c:when>
+															    <c:when test="${reviewhome.point eq 4}">
+																		<span class="text-danger">★★★★</span><span class="text-secondary">★</span>
+															    </c:when>
+															    <c:when test="${reviewhome.point eq 3}">
+																		<span class="text-danger">★★★</span><span class="text-secondary">★★</span>
+															    </c:when>
+															    <c:when test="${reviewhome.point eq 2}">
+																		<span class="text-danger">★★</span><span class="text-secondary">★★★</span>
+															    </c:when>
+															    <c:otherwise>
+															        <span class="text-danger">★</span><span class="text-secondary">★★★★</span>
+															    </c:otherwise> 
+															</c:choose>
+														</div>
+														<div>
+															<span>${reviewhome.review }</span>
+														</div>
+														<div>
+															<span style="font-size:13px;" class="text-secondary">${reviewhome.nickname }</span>
+															<span style="font-size:13px;" class="text-secondary ml-2"><fmt:formatDate value="${reviewhome.createdAt }" pattern="yyyy. MM. dd HH:mm "/></span>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-							</c:forEach>
+								</c:forEach>
+							</div>
 						</div>
 						<div>
 						</div>

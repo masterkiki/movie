@@ -3,6 +3,7 @@ package com.pks.movie.famousline.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,9 +72,11 @@ public class FamouslineBO {
 			
 //			Like likeList = likeBO.selectLike(famousline.getId());
 			int like = likeBO.likeCount(famousline.getId(), 1);
-			boolean isLike = likeBO.isLike(userList.getId(), famousline.getId(), 1);
 			
-			int famouscount = famouslineDAO.countFamouslineByMovieId(movieId);
+			
+			boolean isLike = likeBO.isLike(famousline.getUserId(), famousline.getId(), 1);
+			
+			
 			famouslineDetail.setId(famousline.getId());
 			famouslineDetail.setUserId(famousline.getUserId());
 			famouslineDetail.setMovieId(famousline.getMoiveId());

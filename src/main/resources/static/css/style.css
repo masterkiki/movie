@@ -125,11 +125,7 @@ section > .movie-list{
 	width:900px;
 }
 
-section > .movie-review{
-	width:1000px;
-	height:400px;
-	
-}
+
  textarea {
     width: 50%;
     height: 10.25em;
@@ -150,6 +146,13 @@ section > .movie-review{
 .movie-poster{
 	width:300px;
 	height:350px;
+}
+
+.movie-image-box{
+	height:90px;
+	width:80px;
+	
+	
 }
 
 .info-detail{
@@ -178,10 +181,6 @@ section > .movie-review{
 /* 	height:300px; */
 }
 
-.movie-review{
-	width:1000px;
-	height:400px;
-}
 
 .famousline-box{
 	width:800px;
@@ -193,6 +192,7 @@ section > .movie-review{
 
 .movie-review{
 	width:800px;
+	height:400px;
 }
 
 .actor-image-box{
@@ -211,9 +211,9 @@ section > .movie-review{
  	width:200px;
  	height:70px;
  }
-/*  .actor-famousline{
- 	height:70px;
- } */
+ .actor-famousline1{
+ 	height:100px;
+ }
  
  .actorcastadd{
  	width:1000px;

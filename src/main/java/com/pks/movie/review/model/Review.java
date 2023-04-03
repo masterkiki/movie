@@ -6,11 +6,13 @@ public class Review {
 	
 	private int id;
 	private int userId;
-	private int moiveId;
+	private int movieId;
 	private String review;
 	private int point;
 	private int divisionId;
 	private int likeCount;
+	private Date createdAt;
+	private Date updatedAt;
 	
 	
 	public int getLikeCount() {
@@ -19,11 +21,13 @@ public class Review {
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
-	private Date createdAt;
-	private Date updatedAt;
 	
-	
-	
+	public int getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
 	public int getId() {
 		return id;
 	}
@@ -41,12 +45,6 @@ public class Review {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
-	public int getMoiveId() {
-		return moiveId;
-	}
-	public void setMoiveId(int moiveId) {
-		this.moiveId = moiveId;
 	}
 	public String getReview() {
 		return review;

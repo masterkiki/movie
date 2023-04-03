@@ -60,7 +60,7 @@ public class ReviewBO {
 			
 			reviewDetail.setId(review.getId());
 			reviewDetail.setUserId(user.getId());
-			reviewDetail.setMovieId(review.getMoiveId());
+			reviewDetail.setMovieId(review.getMovieId());
 			reviewDetail.setReview(review.getReview());
 			reviewDetail.setPoint(review.getPoint());
 			reviewDetail.setCreatedAt(review.getCreatedAt());
@@ -85,18 +85,24 @@ public class ReviewBO {
 		
 		for(Review review:reviewList) {
 			
-			Movie movie = movieBO.getMovieList1(review.getId());
+			Movie movie = movieBO.getMovieList1(review.getMovieId());
+			
+			User user = userBO.selectUserById(review.getUserId());
 			
 			ReviewHome reviewHome = new ReviewHome();
 			
 			reviewHome.setId(review.getId());
 			reviewHome.setUserId(review.getUserId());
-			reviewHome.setMoiveId(review.getMoiveId());
+			reviewHome.setMoiveId(review.getMovieId());
 			reviewHome.setReview(review.getReview());
 			reviewHome.setPoint(review.getPoint());
 			reviewHome.setDivisionId(review.getDivisionId());
 			reviewHome.setImagePath(movie.getImagePath());
 			reviewHome.setMovietitle(movie.getMovietitle());
+			reviewHome.setNickname(user.getNickname());
+			reviewHome.setCreatedAt(review.getCreatedAt());
+			reviewHome.setMovietitle(movie.getMovietitle());
+			
 			
 			reviewHomeList.add(reviewHome);
 		}

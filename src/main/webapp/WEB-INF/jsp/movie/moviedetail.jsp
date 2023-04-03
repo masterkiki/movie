@@ -307,7 +307,7 @@
 												<div>
 													<span class="text-danger">${moviedetail.charactername }</span>
 													<span class="small">｜${moviedetail.actor } </span>
-													<span class="text-secondary small">｜${moviedetail.explain }</span>
+													<span class="text-secondary small">｜${moviedetail.explain }${moviedetail.like }</span>
 												</div>
 											</div>
 										</div>
@@ -317,14 +317,14 @@
 											</div>
 											<div>
 												<div class="d-flex">
-<%-- 													<c:choose>
+													<c:choose>
 														<c:when test="${moviedetail.like }">
 															<button type="button" class="likeCancelBtn btn btn-link text-primary ml-2" data-division-id="1" data-row-id="${moviedetail.id }"><i class="bi bi-hand-thumbs-up-fill"></i></button>
 														</c:when>
-														<c:otherwise> --%>
+														<c:otherwise> 
 															<button type="button" class="likeBtn btn btn-link text-dark ml-2" data-division-id="1" data-row-id="${moviedetail.id }"><i class="bi bi-hand-thumbs-up"></i></button>
-<%-- 														</c:otherwise>
-													</c:choose> --%>
+ 														</c:otherwise>
+													</c:choose>
 													<div class="d-flex align-items-center ml-2 text-danger">
 														<span>${moviedetail.likeCount }</span>
 													</div>

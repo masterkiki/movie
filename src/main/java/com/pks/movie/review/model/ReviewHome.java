@@ -1,5 +1,7 @@
 package com.pks.movie.review.model;
 
+import java.util.Date;
+
 public class ReviewHome {
 	
 	private int id;
@@ -9,15 +11,38 @@ public class ReviewHome {
 	private int point;
 	private int divisionId;
 	private int likeCount;
+	private String nickname;
 	private String imagePath;
 	private String movietitle;
+	private Date createdAt;
+	private Date updatedAt;
 	
 	
+	
+	
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 	public String getImagePath() {
 		return imagePath;
 	}
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public int getId() {
 		return id;
