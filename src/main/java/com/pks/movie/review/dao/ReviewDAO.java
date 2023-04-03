@@ -19,7 +19,7 @@ public interface ReviewDAO {
 	
 	public List<Review> selectReview(@Param("movieId") int movieId);
 	
-	public double selectPointByMovieId(@Param("movieId") int movieId);
+	public Double selectPointByMovieId(@Param("movieId") int movieId);
 	
 	public List<Review> selectReviewById();
 	

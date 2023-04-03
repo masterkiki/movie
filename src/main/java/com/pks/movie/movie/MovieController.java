@@ -52,6 +52,7 @@ public class MovieController {
 	@GetMapping("/home/view")
 	public String moivehomeview(Model model) {
 		
+		
 		List<ReviewHome> reviewHomeList = reviewBO.getReviewDetailById();
 		List<Movie> movieList = movieBO.getMovieList();
 		
@@ -84,14 +85,15 @@ public class MovieController {
 			, @RequestParam("val") int val
 			, Model model
 			, HttpSession session) {
+		int userId = (Integer)session.getAttribute("userId");
 		
 		MovieDetail movie = movieBO.getMoiveById(movieId);
 		Actor actor = actorBO.getActorByMovieId(movieId);
 		List<ActorDetail> actorDetail = actorBO.getActorDetailList(movieId);
 		List<Famousline> famouslineList  = famouslineBO.selectFamousLine(movieId);
 		List<Cast> castList = castBO.getCharacterName(movieId);
-		List<FamouslineDetail> famouslineDetailList = famouslineBO.getFamouslineDetailList(movieId);
-		List<ReviewDetail> reviewDetailList = reviewBO.getReviewDetailList(movieId);
+		List<FamouslineDetail> famouslineDetailList = famouslineBO.getFamouslineDetailList(movieId, userId);
+		List<ReviewDetail> reviewDetailList = reviewBO.getReviewDetailList(movieId, userId);
 		
 		int count = famouslineBO.countFamouslineByMovieId(movieId);
 		
@@ -102,10 +104,14 @@ public class MovieController {
 		model.addAttribute("famouslineDetailList" , famouslineDetailList);
 		model.addAttribute("reviewDetailList" ,reviewDetailList);
 		
+		double averagepoint = reviewBO.averagePoint(movieId);
+		
 		
 		List<Actor> actorList = actorBO.getActorList(movieId);
 		
+		model.addAttribute("averagepoint", averagepoint);
 		model.addAttribute("actorList", actorList);
+		model.addAttribute("averagepoint", averagepoint);
 //		model.addAttribute("ff", count);
 		// 굳이 이걸 안써도 jstl 통해서 리스트 사이즈를 알아올수있는 기능이있어 그것으로 처리함
 		// 만약 위의 ff로 사용하려면 count 자체가 값이므로 ${ff.(값)} 안하고 ${ff} 만써도 값이 나온다

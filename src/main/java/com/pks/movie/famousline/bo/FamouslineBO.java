@@ -54,7 +54,7 @@ public class FamouslineBO {
 		return famouslineDAO.selectFamousLine(movieId);
 	}
 	
-	public List<FamouslineDetail> getFamouslineDetailList(int movieId){
+	public List<FamouslineDetail> getFamouslineDetailList(int movieId, int userId){
 		
 		List<Famousline> famouslineList = famouslineDAO.selectFamousLine(movieId);
 		
@@ -70,11 +70,9 @@ public class FamouslineBO {
 			
 			User userList = userBO.selectUserById(famousline.getUserId());
 			
-//			Like likeList = likeBO.selectLike(famousline.getId());
 			int like = likeBO.likeCount(famousline.getId(), 1);
 			
-			
-			boolean isLike = likeBO.isLike(famousline.getUserId(), famousline.getId(), 1);
+			boolean isLike = likeBO.isLike(userId, famousline.getId(), 1);
 			
 			
 			famouslineDetail.setId(famousline.getId());

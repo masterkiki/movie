@@ -11,6 +11,7 @@ public class ReviewHome {
 	private int point;
 	private int divisionId;
 	private int likeCount;
+	private boolean isLike;
 	private String nickname;
 	private String imagePath;
 	private String movietitle;
@@ -22,6 +23,12 @@ public class ReviewHome {
 	
 	public Date getCreatedAt() {
 		return createdAt;
+	}
+	public boolean isLike() {
+		return isLike;
+	}
+	public void setLike(boolean isLike) {
+		this.isLike = isLike;
 	}
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;

@@ -36,6 +36,7 @@ public class LikeBO {
 //	}
 	
 	public boolean isLike(int userId, int rowId, int divisionId) {
+		
 		int count = likeDAO.selectLikeCountByUserId(userId, rowId, divisionId);
 		
 		if(count == 0) {

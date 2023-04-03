@@ -36,7 +36,30 @@
 											<div class="font-weight-bold" style="font-size:45px">${movie.movietitle }</div>
 											<hr>
 											
-											<div>평점   </div> 
+											<div>평점 ${averagepoint }
+											
+												<c:choose> 
+												
+												    <c:when test="${averagepoint eq 5 }">
+															<span class="text-danger">★★★★★</span><span class="text-secondary"></span>
+												    </c:when>
+												     <c:when test="${averagepoint >= 4 }">
+															<span class="text-danger">★★★★</span><span class="text-secondary">★</span>
+												    </c:when>
+												     <c:when test="${averagepoint >= 3 }">
+															<span class="text-danger">★★★</span><span class="text-secondary">★★</span>
+												    </c:when>
+												    <c:when test="${averagepoint >= 2 }">
+															<span class="text-danger">★★</span><span class="text-secondary">★★★</span>
+												    </c:when>
+												    <c:when test="${averagepoint >= 1 }">
+															<span class="text-danger">★</span><span class="text-secondary">★★★★</span>
+												    </c:when>
+												    <c:otherwise>
+												        <span class="text-danger"></span><span class="text-secondary">★★★★★</span>
+												    </c:otherwise> 
+												</c:choose>
+										   </div> 
 											<hr>
 											<div><b class="mr-4">개봉일</b><span class="ml-4">${movie.releasedate }</span></div>
 											<div><b class="mr-5">장르</b><span class="ml-3">${movie.genre }</span></div>
@@ -224,9 +247,17 @@
 												</div>
 											</div>
 											<div class="d-flex justify-content-end mt-3">
-												<button type="button" class="likeBtn btn btn-link text-dark ml-2" data-division-id="2" data-row-id="${reviewDetail.id }"><i class="bi bi-hand-thumbs-up"></i></button>
+													<c:choose>
+														<c:when test="${reviewDetail.like }"> 
+															<button type="button" class="likeCancelBtn btn btn-link text-primary ml-2" data-division-id="2" data-row-id="${reviewDetail.id }"><i class="bi bi-hand-thumbs-up-fill"></i></button>
+														</c:when>
+														<c:otherwise> 
+															<button type="button" class="likeBtn btn btn-link text-dark ml-2" data-division-id="2" data-row-id="${reviewDetail.id }"><i class="bi bi-hand-thumbs-up"></i></button>
+ 														</c:otherwise>
+													</c:choose>
+												<%-- <button type="button" class="likeBtn btn btn-link text-dark ml-2" data-division-id="2" data-row-id="${reviewDetail.id }"><i class="bi bi-hand-thumbs-up"></i></button> --%>
 												<div class="d-flex align-items-center ml-2 text-danger">
-													<span>${reviewDetail.likeCount }</span>
+													<span>${reviewDetail.likeCount } </span>
 												</div>
 											</div>
 										</div>
@@ -307,7 +338,7 @@
 												<div>
 													<span class="text-danger">${moviedetail.charactername }</span>
 													<span class="small">｜${moviedetail.actor } </span>
-													<span class="text-secondary small">｜${moviedetail.explain }${moviedetail.like }</span>
+													<span class="text-secondary small">｜${moviedetail.explain }</span>
 												</div>
 											</div>
 										</div>

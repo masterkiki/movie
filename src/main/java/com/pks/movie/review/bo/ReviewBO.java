@@ -2,6 +2,7 @@ package com.pks.movie.review.bo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class ReviewBO {
 		return reviewDAO.selectReview(movieId);
 	}
 	
-	public List<ReviewDetail> getReviewDetailList(int movieId){
+	public List<ReviewDetail> getReviewDetailList(int movieId ,int userId){
 		
 		List<Review> reviewList = reviewDAO.selectReview(movieId);
 		
@@ -55,7 +56,9 @@ public class ReviewBO {
 			
 			User user = userBO.selectUserById(review.getUserId());
 			
-			int like = likeBO.likeCount(review.getId(), 2);
+			int likecount = likeBO.likeCount(review.getId(), 2);
+			
+			boolean like = likeBO.isLike(userId, review.getId() , 2);
 			
 			
 			reviewDetail.setId(review.getId());
@@ -65,7 +68,9 @@ public class ReviewBO {
 			reviewDetail.setPoint(review.getPoint());
 			reviewDetail.setCreatedAt(review.getCreatedAt());
 			reviewDetail.setNickname(user.getNickname());
-			reviewDetail.setLikeCount(like);
+			reviewDetail.setLikeCount(likecount);
+			reviewDetail.setLike(like);
+			
 			reviewDetailList.add(reviewDetail);
 		}
 		return reviewDetailList;
@@ -79,11 +84,13 @@ public class ReviewBO {
 	
 	public List<ReviewHome> getReviewDetailById(){
 		
+		
 		List<Review> reviewList = reviewDAO.selectReviewById();
 		
 		List<ReviewHome> reviewHomeList = new ArrayList<>();
 		
 		for(Review review:reviewList) {
+			
 			
 			Movie movie = movieBO.getMovieList1(review.getMovieId());
 			
@@ -102,7 +109,6 @@ public class ReviewBO {
 			reviewHome.setNickname(user.getNickname());
 			reviewHome.setCreatedAt(review.getCreatedAt());
 			reviewHome.setMovietitle(movie.getMovietitle());
-			
 			
 			reviewHomeList.add(reviewHome);
 		}

@@ -46,10 +46,12 @@
 	</select>
 	
 	
-	<select id="selectPointByMovieId" parameterType="double" resultType="com.pks.movie.review.model.Review">
+	<select id="selectPointByMovieId" parameterType="int" resultType="double">
 		SELECT AVG(`point`)
 		FROM
 			`review`
+		WHERE
+			`movieId` = #{movieId}
 	</select>
 	
 	<select id="selectReviewById" parameterType="map" resultType="com.pks.movie.review.model.Review">
