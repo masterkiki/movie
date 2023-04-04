@@ -85,7 +85,12 @@ public class MovieController {
 			, @RequestParam("val") int val
 			, Model model
 			, HttpSession session) {
-		int userId = (Integer)session.getAttribute("userId");
+		int userId = 0;
+		
+		if(session.getAttribute("userId") != null) {
+			userId = (int)session.getAttribute("userId");
+		}
+		
 		
 		MovieDetail movie = movieBO.getMoiveById(movieId);
 		Actor actor = actorBO.getActorByMovieId(movieId);
